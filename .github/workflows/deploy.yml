@@ -20,5 +20,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          local-dir: ./        # uploads everything from root
+          local-dir: ./dist/        # uploads everything from root
           server-dir: /public_html/
