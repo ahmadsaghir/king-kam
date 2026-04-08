@@ -31,7 +31,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-export type ServiceCategory = "exterior" | "interior" | "wrapping" | "tech" | "assessment";
+export type ServiceCategory = "exterior" | "interior" | "wrapping" | "tech" | "sales" | "assessment";
 
 export interface ServiceConfig {
   imagePath: string;
@@ -45,10 +45,11 @@ export const CATEGORY_LABELS: Record<ServiceCategory, { de: string; en: string }
   interior: { de: "Innenraum", en: "Interior" },
   wrapping: { de: "Folierung & Karosserie", en: "Wrapping & Body" },
   tech: { de: "Technik & Elektronik", en: "Tech & Electronics" },
+  sales: { de: "Verkauf & Ankauf", en: "Sales & Acquisition" },
   assessment: { de: "Gutachten & Bewertung", en: "Assessment & Reports" },
 };
 
-export const CATEGORY_ORDER: ServiceCategory[] = ["exterior", "interior", "wrapping", "tech", "assessment"];
+export const CATEGORY_ORDER: ServiceCategory[] = ["exterior", "interior", "wrapping", "tech", "sales", "assessment"];
 
 export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
   "Car Washing": {
@@ -247,7 +248,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
       en: "Thorough multi-point safety and condition check",
     },
     icon: ClipboardCheck,
-    category: "assessment",
+    category: "tech",
   },
   "Car Sales": {
     imagePath: "/services/car-sales.webp",
@@ -256,7 +257,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
       en: "Browse and purchase premium vehicles from our showroom",
     },
     icon: Car,
-    category: "assessment",
+    category: "sales",
   },
   "Accident Report": {
     imagePath: "/services/accident-report.webp",
