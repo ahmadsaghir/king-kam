@@ -106,20 +106,6 @@ export const translations = {
         en: ["Station Wagon", "Sedan", "Coupe"],
       },
     },
-    card3: {
-      title: {
-        de: "Komplett-Folierung Special",
-        en: "Complete Car Wrapping Special",
-      },
-      included: {
-        de: ["Komplettfolierung"],
-        en: ["Full Car Wrap"],
-      },
-      vehicleTypes: {
-        de: ["Kombi", "Limousine", "Coupé"],
-        en: ["Station Wagon", "Sedan", "Coupe"],
-      },
-    },
   },
   loyalty: {
     headline: {

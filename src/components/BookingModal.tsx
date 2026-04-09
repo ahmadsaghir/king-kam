@@ -92,7 +92,6 @@ const OFFER_SERVICE_MAP: Record<string, string[]> = {
     "Tire Service",
   ],
   "Premium 3-Layer Car Polishing": ["Scratch Removal", "Waxing & Polishing"],
-  "Complete Car Wrapping Special": ["Car Wrapping"],
 };
 
 /* ─── Calendar sub-component ─────────────────────────────────────────────── */
@@ -504,7 +503,6 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
       const offerCards = [
         translations.offers.card1.title,
         translations.offers.card2.title,
-        translations.offers.card3.title,
       ];
       const card = offerCards.find((c) => c.en === data.offer);
       return card ? t(card, lang) : data.offer;
@@ -703,7 +701,6 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
               const offerCards = [
                 translations.offers.card1.title,
                 translations.offers.card2.title,
-                translations.offers.card3.title,
               ];
               const prices = t(bk.offerPrices, lang);
               return (
@@ -979,7 +976,6 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
                     const offerCards = [
                       translations.offers.card1.title,
                       translations.offers.card2.title,
-                      translations.offers.card3.title,
                     ];
                     const card = offerCards.find((c) => c.en === data.offer);
                     const displayOffer = card ? t(card, lang) : data.offer;

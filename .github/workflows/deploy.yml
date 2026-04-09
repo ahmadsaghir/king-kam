@@ -33,3 +33,10 @@ jobs:
           port: 21
           local-dir: ./dist/public/
           server-dir: /public_html/
+          exclude: |
+            **/*.jpg
+            **/*.jpeg
+            **/*.png
+            **/*.gif
+            **/*.webp
+            **/*.svg

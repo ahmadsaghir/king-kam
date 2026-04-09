@@ -345,7 +345,7 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
           >
             {/* Card 1 – Interior & Exterior Cleaning Package */}
             <motion.div
@@ -470,71 +470,6 @@ export default function HomePage() {
                 <button
                   onClick={() => openBooking(translations.offers.card2.title.en)}
                   data-testid="cta-offer-2-whatsapp"
-                  className="w-full bg-primary text-black py-4 text-sm font-bold uppercase tracking-widest hover:bg-yellow-400 transition-colors"
-                >
-                  {t(offers.bookNow, lang)}
-                </button>
-              </div>
-            </motion.div>
-
-            {/* Card 3 – Complete Car Wrapping Special */}
-            <motion.div
-              variants={fadeIn}
-              className="bg-[#1a1a1a] border border-white/5 p-8 flex flex-col hover:border-primary/40 transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="mb-6">
-                <span className="inline-block bg-primary text-black text-xs font-bold uppercase tracking-widest px-3 py-1 mb-4">
-                  €1,599
-                </span>
-                <h3 className="text-2xl font-bold uppercase leading-tight">
-                  {t(offers.card3.title, lang)}
-                </h3>
-                <p className="text-xs text-gray-500 font-semibold uppercase tracking-widest mt-2">
-                  {t(offers.availableFrom, lang)}
-                </p>
-              </div>
-              <div className="mb-4">
-                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
-                  {t(offers.included, lang)}
-                </p>
-                <ul className="space-y-2">
-                  {t(offers.card3.included, lang).map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start space-x-3 text-sm font-medium text-gray-300"
-                    >
-                      <CheckCircle2
-                        className="text-primary mt-0.5 shrink-0"
-                        size={16}
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-4 pt-4 border-t border-white/10">
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
-                  {t(offers.validVehicleTypes, lang)}
-                </p>
-                <ul className="space-y-2">
-                  {t(offers.card3.vehicleTypes, lang).map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start space-x-3 text-sm font-medium text-gray-500"
-                    >
-                      <ChevronRight
-                        className="text-primary/60 mt-0.5 shrink-0"
-                        size={16}
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-auto pt-8">
-                <button
-                  onClick={() => openBooking(translations.offers.card3.title.en)}
-                  data-testid="cta-offer-3-whatsapp"
                   className="w-full bg-primary text-black py-4 text-sm font-bold uppercase tracking-widest hover:bg-yellow-400 transition-colors"
                 >
                   {t(offers.bookNow, lang)}
