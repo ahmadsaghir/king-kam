@@ -63,7 +63,7 @@ export default function HomePage() {
   const nav = translations.nav;
   const hero = translations.hero;
   const offers = translations.offers;
-  const loyalty = translations.loyalty;
+  //const loyalty = translations.loyalty;
   const contact = translations.contact;
   const footer = translations.footer;
 
@@ -480,7 +480,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Loyalty Card Banner */}
+      {/* 5. Loyalty Card Banner
       <section className="py-24 px-6 md:px-12 bg-black relative">
         <div className="max-w-6xl mx-auto relative">
           <motion.div
@@ -506,7 +506,7 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
-
+      */}
       {/* 6. Footer */}
       <footer
         id="about"
