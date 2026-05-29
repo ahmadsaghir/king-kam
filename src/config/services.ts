@@ -38,6 +38,8 @@ export interface ServiceConfig {
   description: { de: string; en: string };
   icon: LucideIcon;
   category: ServiceCategory;
+  price?: { amount: number; unit: "fixed" | "from"; currency: string };
+  label?: { de: string; en: string };
 }
 
 export const CATEGORY_LABELS: Record<ServiceCategory, { de: string; en: string }> = {
@@ -60,6 +62,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Droplets,
     category: "exterior",
+    label: { de: "ab 15€", en: "from €15" },
   },
   "Auto Detailing": {
     imagePath: "/services/auto-detailing.webp",
@@ -69,6 +72,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Sparkles,
     category: "exterior",
+    label: { de: "ab €50", en: "from €50" },
   },
   "Waxing & Polishing": {
     imagePath: "/services/waxing-polishing.webp",
@@ -78,6 +82,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: CircleDashed,
     category: "exterior",
+    price: { amount: 150, unit: "from", currency: "€" },
   },
   "Scratch Removal": {
     imagePath: "/services/scratch-removal.webp",
@@ -87,6 +92,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Wrench,
     category: "exterior",
+    price: { amount: 50, unit: "from", currency: "€" },
   },
   "Wheel Cleaning": {
     imagePath: "/services/wheel-cleaning.webp",
@@ -96,6 +102,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: CircleGauge,
     category: "exterior",
+    price: { amount: 50, unit: "from", currency: "€" },
   },
   "Tire Service": {
     imagePath: "/services/tire-service.webp",
@@ -105,6 +112,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Layers,
     category: "exterior",
+    price: { amount: 100, unit: "fixed", currency: "€" },
   },
   "Headlight Polishing": {
     imagePath: "/services/headlight-polishing.webp",
@@ -114,6 +122,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Sun,
     category: "exterior",
+    price: { amount: 50, unit: "fixed", currency: "€" },
   },
   "Paint Sealant": {
     imagePath: "/services/paint-sealant.webp",
@@ -123,6 +132,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Droplet,
     category: "exterior",
+    price: { amount: 50, unit: "fixed", currency: "€" },
   },
   "Interior Cleaning": {
     imagePath: "/services/interior-cleaning.webp",
@@ -132,6 +142,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Armchair,
     category: "interior",
+    price: { amount: 50, unit: "from", currency: "€" },
   },
   "Starlight Headliner Installation": {
     imagePath: "/services/starlight-headliner.webp",
@@ -141,6 +152,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Stars,
     category: "interior",
+    label: { de: "1€ Pro Stern | ab 400 Sterne", en: "€1 per star | from 400 stars" },
   },
   "Ambient Lighting": {
     imagePath: "/services/ambient-lighting.webp",
@@ -150,6 +162,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Lightbulb,
     category: "interior",
+    price: { amount: 400, unit: "from", currency: "€" },
   },
   "Interior Roof Dyeing": {
     imagePath: "/services/interior-roof-dyeing.webp",
@@ -159,6 +172,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Paintbrush,
     category: "interior",
+    price: { amount: 300, unit: "from", currency: "€" },
   },
   "Interior Trim Wrapping": {
     imagePath: "/services/interior-trim-wrapping.webp",
@@ -168,6 +182,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: LayoutTemplate,
     category: "interior",
+    price: { amount: 150, unit: "from", currency: "€" },
   },
   "Car Wrapping": {
     imagePath: "/services/car-wrapping.webp",
@@ -177,6 +192,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Palette,
     category: "wrapping",
+    price: { amount: 2000, unit: "from", currency: "€" },
   },
   "Roof Wrapping": {
     imagePath: "/services/roof-wrapping.webp",
@@ -186,6 +202,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: PanelTop,
     category: "wrapping",
+    price: { amount: 200, unit: "from", currency: "€" },
   },
   "Exterior Trim Wrapping": {
     imagePath: "/services/exterior-trim-wrapping.webp",
@@ -195,6 +212,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Frame,
     category: "wrapping",
+    price: { amount: 150, unit: "from", currency: "€" },
   },
   "Body Kit Installation": {
     imagePath: "/services/body-kit.webp",
@@ -213,6 +231,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Disc,
     category: "wrapping",
+    price: { amount: 100, unit: "fixed", currency: "€" },
   },
   "Rim Painting": {
     imagePath: "/services/rim-painting.webp",
@@ -222,6 +241,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Cog,
     category: "wrapping",
+    price: { amount: 150, unit: "from", currency: "€" },
   },
   "Display & CarPlay Installation": {
     imagePath: "/services/display-carplay.webp",
@@ -231,6 +251,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Monitor,
     category: "tech",
+    price: { amount: 150, unit: "from", currency: "€" },
   },
   "Digital Cluster Installation": {
     imagePath: "/services/digital-cluster.webp",
@@ -240,6 +261,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Gauge,
     category: "tech",
+    price: { amount: 500, unit: "from", currency: "€" },
   },
   "Vehicle Inspection": {
     imagePath: "/services/vehicle-inspection.webp",
@@ -249,6 +271,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: ClipboardCheck,
     category: "tech",
+    price: { amount: 50, unit: "from", currency: "€" },
   },
   "Car Sales": {
     imagePath: "/services/car-sales.webp",

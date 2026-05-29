@@ -284,9 +284,10 @@ interface ServiceCardProps {
   selected: boolean;
   cfg: import("@/config/services").ServiceConfig | undefined;
   onClick: () => void;
+  lang: "de" | "en";
 }
 
-function ServiceCard({ label, enKey, selected, cfg, onClick }: ServiceCardProps) {
+function ServiceCard({ label, enKey, selected, cfg, onClick, lang }: ServiceCardProps) {
   const [imgError, setImgError] = React.useState(false);
   const Icon = cfg?.icon;
   const testId = `service-${enKey.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
@@ -332,6 +333,15 @@ function ServiceCard({ label, enKey, selected, cfg, onClick }: ServiceCardProps)
         <span className={`block text-[10px] font-bold uppercase tracking-widest leading-tight transition-colors duration-200 ${selected ? "text-primary" : "text-white"}`}>
           {label}
         </span>
+        {(cfg?.price || cfg?.label) && (
+          <span className="inline-block mt-1 text-[9px] font-bold tracking-wider text-black bg-primary px-1.5 py-0.5">
+            {cfg.label
+              ? (lang === "de" ? cfg.label.de : cfg.label.en)
+              : cfg.price!.unit === "from"
+              ? `${lang === "de" ? "ab " : "from "}${cfg.price!.currency}${cfg.price!.amount}`
+              : `${cfg.price!.currency}${cfg.price!.amount}`}
+          </span>
+        )}
       </div>
 
       {/* Selected check badge */}
@@ -806,6 +816,7 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
                         selected={selected}
                         cfg={cfg}
                         onClick={toggle}
+                        lang={lang}
                       />
                     );
                   })}
@@ -843,6 +854,7 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
                         selected={selected}
                         cfg={cfg}
                         onClick={toggle}
+                        lang={lang}
                       />
                     );
                   })}
@@ -1001,10 +1013,25 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
                         enIdx >= 0
                           ? t(bk.services, lang)[enIdx]
                           : svcKey;
+                      const cfg = SERVICE_CONFIG[svcKey];
+                      const priceText = cfg?.label
+                        ? (lang === "de" ? cfg.label.de : cfg.label.en)
+                        : cfg?.price
+                        ? cfg.price.unit === "from"
+                          ? `${lang === "de" ? "ab " : "from "}${cfg.price.currency}${cfg.price.amount}`
+                          : `${cfg.price.currency}${cfg.price.amount}`
+                        : null;
                       return (
-                        <span key={svcKey} className="text-white font-bold text-sm">
-                          {displaySvc}
-                        </span>
+                        <div key={svcKey} className="flex items-center justify-between gap-2">
+                          <span className="text-white font-bold text-sm">
+                            {displaySvc}
+                          </span>
+                          {priceText && (
+                            <span className="shrink-0 text-[10px] font-bold text-black bg-primary px-2 py-0.5">
+                              {priceText}
+                            </span>
+                          )}
+                        </div>
                       );
                     })}
                   </div>
