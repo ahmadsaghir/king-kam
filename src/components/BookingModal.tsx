@@ -781,12 +781,12 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
                         >
                           {prices[idx]}
                         </span>
-                        {selected && (
+                        {/*selected && (
                           <Check
                             size={14}
                             className="absolute top-2 right-2 text-primary"
                           />
-                        )}
+                        )*/}
                       </button>
                     );
                   })}
@@ -809,9 +809,9 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
                     >
                       {t(bk.offerNoOffer, lang)}
                     </span>
-                    {data.offer === null && (
+                    {/*data.offer === null && (
                       <Check size={14} className="shrink-0 ml-4 text-gray-400" />
-                    )}
+                    )*/}
                   </button>
                 </div>
               );
