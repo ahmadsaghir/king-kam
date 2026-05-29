@@ -345,9 +345,9 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8"
           >
-            {/* Card 1 – Interior & Exterior Cleaning Package */}
+            {/* OLD CARD 1 – Interior & Exterior Cleaning Package (commented out)
             <motion.div
               variants={fadeIn}
               className="bg-[#1a1a1a] border border-white/5 p-8 flex flex-col hover:border-primary/40 transition-all duration-300 hover:-translate-y-1"
@@ -366,14 +366,8 @@ export default function HomePage() {
                 </p>
                 <ul className="space-y-2">
                   {t(offers.card1.included, lang).map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start space-x-3 text-sm font-medium text-gray-300"
-                    >
-                      <CheckCircle2
-                        className="text-primary mt-0.5 shrink-0"
-                        size={16}
-                      />
+                    <li key={i} className="flex items-start space-x-3 text-sm font-medium text-gray-300">
+                      <CheckCircle2 className="text-primary mt-0.5 shrink-0" size={16} />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -385,14 +379,8 @@ export default function HomePage() {
                 </p>
                 <ul className="space-y-2">
                   {t(offers.card1.extras, lang).map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start space-x-3 text-sm font-medium text-gray-500"
-                    >
-                      <ChevronRight
-                        className="text-primary/60 mt-0.5 shrink-0"
-                        size={16}
-                      />
+                    <li key={i} className="flex items-start space-x-3 text-sm font-medium text-gray-500">
+                      <ChevronRight className="text-primary/60 mt-0.5 shrink-0" size={16} />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -408,8 +396,9 @@ export default function HomePage() {
                 </button>
               </div>
             </motion.div>
+            */}
 
-            {/* Card 2 – Premium 3-Layer Car Polishing */}
+            {/* OLD CARD 2 – Premium 3-Layer Car Polishing (commented out)
             <motion.div
               variants={fadeIn}
               className="bg-[#1a1a1a] border border-primary/30 p-8 flex flex-col hover:border-primary/70 transition-all duration-300 hover:-translate-y-1 relative"
@@ -434,6 +423,57 @@ export default function HomePage() {
                 </p>
                 <ul className="space-y-2">
                   {t(offers.card2.included, lang).map((item, i) => (
+                    <li key={i} className="flex items-start space-x-3 text-sm font-medium text-gray-300">
+                      <CheckCircle2 className="text-primary mt-0.5 shrink-0" size={16} />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
+                  {t(offers.validVehicleTypes, lang)}
+                </p>
+                <ul className="space-y-2">
+                  {t(offers.card2.vehicleTypes, lang).map((item, i) => (
+                    <li key={i} className="flex items-start space-x-3 text-sm font-medium text-gray-500">
+                      <ChevronRight className="text-primary/60 mt-0.5 shrink-0" size={16} />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-auto pt-8">
+                <button
+                  onClick={() => openBooking(translations.offers.card2.title.en)}
+                  data-testid="cta-offer-2-whatsapp"
+                  className="w-full bg-primary text-black py-4 text-sm font-bold uppercase tracking-widest hover:bg-yellow-400 transition-colors"
+                >
+                  {t(offers.bookNow, lang)}
+                </button>
+              </div>
+            </motion.div>
+            */}
+
+            {/* Card 1 – Complete Detailing (Up to 5 Seats) */}
+            <motion.div
+              variants={fadeIn}
+              className="bg-[#1a1a1a] border border-white/5 p-8 flex flex-col hover:border-primary/40 transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="mb-6">
+                <span className="inline-block bg-primary text-black text-xs font-bold uppercase tracking-widest px-3 py-1 mb-4">
+                  {t(offers.card1.price, lang)}
+                </span>
+                <h3 className="text-2xl font-bold uppercase leading-tight">
+                  {t(offers.card1.title, lang)}
+                </h3>
+              </div>
+              <div className="mb-4">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
+                  {t(offers.included, lang)}
+                </p>
+                <ul className="space-y-2">
+                  {t(offers.card1.included, lang).map((item, i) => (
                     <li
                       key={i}
                       className="flex items-start space-x-3 text-sm font-medium text-gray-300"
@@ -447,18 +487,42 @@ export default function HomePage() {
                   ))}
                 </ul>
               </div>
-              <div className="mt-4 pt-4 border-t border-white/10">
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
-                  {t(offers.validVehicleTypes, lang)}
+              <div className="mt-auto pt-8">
+                <button
+                  onClick={() => openBooking(translations.offers.card1.title.en)}
+                  data-testid="cta-offer-1-whatsapp"
+                  className="w-full bg-primary text-black py-4 text-sm font-bold uppercase tracking-widest hover:bg-yellow-400 transition-colors"
+                >
+                  {t(offers.bookNow, lang)}
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Card 2 – Complete Detailing (From 5 Seats) */}
+            <motion.div
+              variants={fadeIn}
+              className="bg-[#1a1a1a] border border-white/5 p-8 flex flex-col hover:border-primary/40 transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="mb-6">
+                <span className="inline-block bg-primary text-black text-xs font-bold uppercase tracking-widest px-3 py-1 mb-4">
+                  {t(offers.card2.price, lang)}
+                </span>
+                <h3 className="text-2xl font-bold uppercase leading-tight">
+                  {t(offers.card2.title, lang)}
+                </h3>
+              </div>
+              <div className="mb-4">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
+                  {t(offers.included, lang)}
                 </p>
                 <ul className="space-y-2">
-                  {t(offers.card2.vehicleTypes, lang).map((item, i) => (
+                  {t(offers.card2.included, lang).map((item, i) => (
                     <li
                       key={i}
-                      className="flex items-start space-x-3 text-sm font-medium text-gray-500"
+                      className="flex items-start space-x-3 text-sm font-medium text-gray-300"
                     >
-                      <ChevronRight
-                        className="text-primary/60 mt-0.5 shrink-0"
+                      <CheckCircle2
+                        className="text-primary mt-0.5 shrink-0"
                         size={16}
                       />
                       <span>{item}</span>
@@ -470,6 +534,95 @@ export default function HomePage() {
                 <button
                   onClick={() => openBooking(translations.offers.card2.title.en)}
                   data-testid="cta-offer-2-whatsapp"
+                  className="w-full bg-primary text-black py-4 text-sm font-bold uppercase tracking-widest hover:bg-yellow-400 transition-colors"
+                >
+                  {t(offers.bookNow, lang)}
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Card 3 – Car Polishing */}
+            <motion.div
+              variants={fadeIn}
+              className="bg-[#1a1a1a] border border-primary/30 p-8 flex flex-col hover:border-primary/70 transition-all duration-300 hover:-translate-y-1 relative"
+            >
+              <div className="absolute top-0 right-0 bg-primary text-black text-xs font-bold uppercase tracking-widest px-3 py-1">
+                {t(offers.popular, lang)}
+              </div>
+              <div className="mb-6 mt-4">
+                <span className="inline-block border border-primary/50 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 mb-4">
+                  {t(offers.card3.price, lang)}
+                </span>
+                <h3 className="text-2xl font-bold uppercase leading-tight">
+                  {t(offers.card3.title, lang)}
+                </h3>
+              </div>
+              <div className="mb-4">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
+                  {t(offers.included, lang)}
+                </p>
+                <ul className="space-y-2">
+                  {t(offers.card3.included, lang).map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start space-x-3 text-sm font-medium text-gray-300"
+                    >
+                      <CheckCircle2
+                        className="text-primary mt-0.5 shrink-0"
+                        size={16}
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-auto pt-8">
+                <button
+                  onClick={() => openBooking(translations.offers.card3.title.en)}
+                  data-testid="cta-offer-3-whatsapp"
+                  className="w-full bg-primary text-black py-4 text-sm font-bold uppercase tracking-widest hover:bg-yellow-400 transition-colors"
+                >
+                  {t(offers.bookNow, lang)}
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Card 4 – Car Wax */}
+            <motion.div
+              variants={fadeIn}
+              className="bg-[#1a1a1a] border border-white/5 p-8 flex flex-col hover:border-primary/40 transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="mb-6">
+                <span className="inline-block bg-primary text-black text-xs font-bold uppercase tracking-widest px-3 py-1 mb-4">
+                  {t(offers.card4.price, lang)}
+                </span>
+                <h3 className="text-2xl font-bold uppercase leading-tight">
+                  {t(offers.card4.title, lang)}
+                </h3>
+              </div>
+              <div className="mb-4">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
+                  {t(offers.included, lang)}
+                </p>
+                <ul className="space-y-2">
+                  {t(offers.card4.included, lang).map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start space-x-3 text-sm font-medium text-gray-300"
+                    >
+                      <CheckCircle2
+                        className="text-primary mt-0.5 shrink-0"
+                        size={16}
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-auto pt-8">
+                <button
+                  onClick={() => openBooking(translations.offers.card4.title.en)}
+                  data-testid="cta-offer-4-whatsapp"
                   className="w-full bg-primary text-black py-4 text-sm font-bold uppercase tracking-widest hover:bg-yellow-400 transition-colors"
                 >
                   {t(offers.bookNow, lang)}

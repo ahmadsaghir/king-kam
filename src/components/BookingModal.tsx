@@ -85,13 +85,28 @@ const EMPTY_DATA: BookingData = {
 /* ─── Offer pre-selection mapping ────────────────────────────────────────── */
 
 const OFFER_SERVICE_MAP: Record<string, string[]> = {
-  "Interior & Exterior Cleaning Package": [
+  // Old offers (commented out)
+  // "Interior & Exterior Cleaning Package": [
+  //   "Car Washing",
+  //   "Interior Cleaning",
+  //   "Wheel Cleaning",
+  //   "Tire Service",
+  // ],
+  // "Premium 3-Layer Car Polishing": ["Scratch Removal", "Waxing & Polishing"],
+  "COMPLETE DETAILING (UP TO 5 SEATS)": [
     "Car Washing",
     "Interior Cleaning",
     "Wheel Cleaning",
     "Tire Service",
   ],
-  "Premium 3-Layer Car Polishing": ["Scratch Removal", "Waxing & Polishing"],
+  "COMPLETE DETAILING (FROM 5 SEATS)": [
+    "Car Washing",
+    "Interior Cleaning",
+    "Wheel Cleaning",
+    "Tire Service",
+  ],
+  "CAR POLISHING": ["Scratch Removal", "Waxing & Polishing"],
+  "CAR WAX": ["Waxing & Polishing"],
 };
 
 /* ─── Calendar sub-component ─────────────────────────────────────────────── */
@@ -1002,6 +1017,8 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
                     const offerCards = [
                       translations.offers.card1.title,
                       translations.offers.card2.title,
+                      translations.offers.card3.title,
+                      translations.offers.card4.title,
                     ];
                     const card = offerCards.find((c) => c.en === data.offer);
                     const displayOffer = card ? t(card, lang) : data.offer;

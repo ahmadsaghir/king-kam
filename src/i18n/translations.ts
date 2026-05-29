@@ -54,56 +54,126 @@ export const translations = {
       de: "Verfügbar ab 1. April 2026",
       en: "Available from April 1, 2026",
     },
+    // OLD CARD 1 (commented out)
+    // card1: {
+    //   title: {
+    //     de: "Innen- und Außenreinigung komplett",
+    //     en: "Interior & Exterior Cleaning Package",
+    //   },
+    //   included: {
+    //     de: [
+    //       "Komplette Außenwäsche",
+    //       "Felgen- und Reifenreinigung",
+    //       "Gründliche Innenreinigung (Sitze & Boden)",
+    //       "Staubsaugen",
+    //       "Reinigung von Armaturenbrett & Kunststoffen",
+    //       "Fahrzeugduft / Lufterfrischer",
+    //     ],
+    //     en: [
+    //       "Complete exterior wash",
+    //       "Wheel and tire cleaning",
+    //       "Thorough interior cleaning (seats & floor)",
+    //       "Vacuuming",
+    //       "Cleaning of dashboard & plastics",
+    //       "Car scenting / Air freshener",
+    //     ],
+    //   },
+    //   extras: {
+    //     de: [
+    //       "Entfernung hartnäckiger Flecken",
+    //       "Tiefenreinigung mit Dampf",
+    //       "Professionelle Lackpolitur",
+    //       "Lederpflege",
+    //     ],
+    //     en: [
+    //       "Removal of stubborn stains",
+    //       "Deep steam cleaning",
+    //       "Professional paint polishing",
+    //       "Leather conditioning",
+    //     ],
+    //   },
+    // },
+    // OLD CARD 2 (commented out)
+    // card2: {
+    //   title: {
+    //     de: "Premium 3-Schicht-Politur",
+    //     en: "Premium 3-Layer Car Polishing",
+    //   },
+    //   included: {
+    //     de: ["Kratzer entfernen", "Tiefenglanz", "Hochglanzfinish"],
+    //     en: ["Remove scratches", "Deep shine", "High-gloss finish"],
+    //   },
+    //   vehicleTypes: {
+    //     de: ["Kombi", "Limousine", "Coupé"],
+    //     en: ["Station Wagon", "Sedan", "Coupe"],
+    //   },
+    // },
     card1: {
       title: {
-        de: "Innen- und Außenreinigung komplett",
-        en: "Interior & Exterior Cleaning Package",
+        de: "KOMPLETT AUFBEREITUNG (BIS 5 SITZE)",
+        en: "COMPLETE DETAILING (UP TO 5 SEATS)",
       },
+      price: { de: "75 €", en: "75 €" },
       included: {
         de: [
-          "Komplette Außenwäsche",
-          "Felgen- und Reifenreinigung",
-          "Gründliche Innenreinigung (Sitze & Boden)",
-          "Staubsaugen",
-          "Reinigung von Armaturenbrett & Kunststoffen",
-          "Fahrzeugduft / Lufterfrischer",
+          "Außenwäsche",
+          "Gründliche Innenraumreinigung",
+          "Felgenreinigung",
+          "Reifenglanz",
+          "Armaturenbrett-Pflege & Glanz",
         ],
         en: [
-          "Complete exterior wash",
-          "Wheel and tire cleaning",
-          "Thorough interior cleaning (seats & floor)",
-          "Vacuuming",
-          "Cleaning of dashboard & plastics",
-          "Car scenting / Air freshener",
-        ],
-      },
-      extras: {
-        de: [
-          "Entfernung hartnäckiger Flecken",
-          "Tiefenreinigung mit Dampf",
-          "Professionelle Lackpolitur",
-          "Lederpflege",
-        ],
-        en: [
-          "Removal of stubborn stains",
-          "Deep steam cleaning",
-          "Professional paint polishing",
-          "Leather conditioning",
+          "Exterior wash",
+          "Thorough interior cleaning",
+          "Wheel/Rim cleaning",
+          "Tire shine",
+          "Dashboard care & shine",
         ],
       },
     },
     card2: {
       title: {
-        de: "Premium 3-Schicht-Politur",
-        en: "Premium 3-Layer Car Polishing",
+        de: "KOMPLETT AUFBEREITUNG (AB 5 SITZE)",
+        en: "COMPLETE DETAILING (FROM 5 SEATS)",
       },
+      price: { de: "AB 120 €", en: "FROM 120 €" },
       included: {
-        de: ["Kratzer entfernen", "Tiefenglanz", "Hochglanzfinish"],
+        de: [
+          "Außenwäsche",
+          "Gründliche Innenraumreinigung",
+          "Felgenreinigung",
+          "Reifenglanz",
+          "Armaturenbrett-Pflege & Glanz",
+        ],
+        en: [
+          "Exterior wash",
+          "Thorough interior cleaning",
+          "Wheel/Rim cleaning",
+          "Tire shine",
+          "Dashboard care & shine",
+        ],
+      },
+    },
+    card3: {
+      title: {
+        de: "AUTO-POLIERUNG",
+        en: "CAR POLISHING",
+      },
+      price: { de: "NUR 150 €", en: "ONLY 150 €" },
+      included: {
+        de: ["Kratzer entfernen", "Tiefenglanz", "Hochglanz-Finish"],
         en: ["Remove scratches", "Deep shine", "High-gloss finish"],
       },
-      vehicleTypes: {
-        de: ["Kombi", "Limousine", "Coupé"],
-        en: ["Station Wagon", "Sedan", "Coupe"],
+    },
+    card4: {
+      title: {
+        de: "AUTO-WACHS",
+        en: "CAR WAX",
+      },
+      price: { de: "50 €", en: "50 €" },
+      included: {
+        de: ["Für den ultimativen Schutz und Glanz"],
+        en: ["For the ultimate protection and shine"],
       },
     },
   },
@@ -201,8 +271,8 @@ export const translations = {
       en: "No offer, I'll choose my services manually",
     },
     offerPrices: {
-      de: ["ab €50", "€120", "€1.599"],
-      en: ["from €50", "€120", "€1,599"],
+      de: ["75 €", "AB 120 €", "NUR 150 €", "50 €"],
+      en: ["75 €", "FROM 120 €", "ONLY 150 €", "50 €"],
     },
     back: { de: "Zurück", en: "Back" },
     next: { de: "Weiter", en: "Next" },
