@@ -504,6 +504,19 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
       return enKey;
     });
 
+    const servicePrices = data.services.map((svcKey) => {
+      const cfg = SERVICE_CONFIG[svcKey];
+      if (!cfg) return null;
+      if (cfg.label) {
+        return lang === "de" ? cfg.label.de : cfg.label.en;
+      }
+      if (cfg.price) {
+        const prefix = cfg.price.unit === "from" ? (lang === "de" ? "ab " : "from ") : "";
+        return `${prefix}${cfg.price.currency}${cfg.price.amount}`;
+      }
+      return null;
+    });
+
     const bodyTypeIdx = translations.booking.bodyTypes.en.indexOf(data.bodyType);
     const localizedBodyType =
       bodyTypeIdx >= 0 ? t(bk.bodyTypes, lang)[bodyTypeIdx] : data.bodyType;
@@ -526,6 +539,7 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
       seats: data.seats,
       offer: localizedOffer,
       services: localizedServices,
+      servicePrices: servicePrices,
       date: displayDate,
       time: data.time,
     };
@@ -946,7 +960,7 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
                   {t(bk.reviewDetails, lang)}
                 </p>
                 <div className="bg-[#111] border border-white/5 divide-y divide-white/5">
-                  {[
+                  {([
                     {
                       label: t(summaryLabels.name, lang),
                       value: data.name,
@@ -974,7 +988,7 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
                         : "",
                     },
                     { label: t(summaryLabels.time, lang), value: data.time },
-                  ].map(({ label, value }) => (
+                  ]).map(({ label, value }) => (
                     <div key={label} className="flex justify-between px-4 py-3">
                       <span className="text-gray-500 font-semibold uppercase tracking-wider text-xs">
                         {label}

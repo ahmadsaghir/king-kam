@@ -295,6 +295,7 @@ export const translations = {
         seats: string;
         offer: string | null;
         services: string[];
+        servicePrices: (string | null)[];
         date: string;
         time: string;
       }) =>
@@ -307,7 +308,10 @@ export const translations = {
           `Sitze: ${data.seats}`,
           ...(data.offer ? [`Angebot: ${data.offer}`] : []),
           `Leistungen:`,
-          ...data.services.map((s, i) => `${i + 1}. ${s}.`),
+          ...data.services.map((s, i) => {
+            const price = data.servicePrices[i];
+            return price ? `${i + 1}. ${s} (${price})` : `${i + 1}. ${s}`;
+          }),
           `Datum: ${data.date}`,
           `Uhrzeit: ${data.time}`,
         ].join("\n"),
@@ -319,6 +323,7 @@ export const translations = {
         seats: string;
         offer: string | null;
         services: string[];
+        servicePrices: (string | null)[];
         date: string;
         time: string;
       }) =>
@@ -331,7 +336,10 @@ export const translations = {
           `Seats: ${data.seats}`,
           ...(data.offer ? [`Offer: ${data.offer}`] : []),
           `Services:`,
-          ...data.services.map((s, i) => `${i + 1}. ${s}.`),
+          ...data.services.map((s, i) => {
+            const price = data.servicePrices[i];
+            return price ? `${i + 1}. ${s} (${price})` : `${i + 1}. ${s}`;
+          }),
           `Date: ${data.date}`,
           `Time: ${data.time}`,
         ].join("\n"),
