@@ -97,16 +97,16 @@ const OFFER_SERVICE_MAP: Record<string, string[]> = {
     "Car Washing",
     "Interior Cleaning",
     "Wheel Cleaning",
-    "Tire Service",
+    "Auto Detailing",
   ],
   "COMPLETE DETAILING (FROM 5 SEATS)": [
     "Car Washing",
     "Interior Cleaning",
     "Wheel Cleaning",
-    "Tire Service",
+    "Auto Detailing",
   ],
-  "CAR POLISHING": ["Scratch Removal", "Waxing & Polishing"],
-  "CAR WAX": ["Waxing & Polishing"],
+  "CAR POLISHING": ["Waxing & Polishing"],
+  "CAR WAX": ["Paint Sealant"],
 };
 
 /* ─── Calendar sub-component ─────────────────────────────────────────────── */
@@ -1063,34 +1063,125 @@ const message = bk.whatsappMessage[lang](messageData);
                     <span className="text-gray-500 font-semibold uppercase tracking-wider text-xs mb-1">
                       {t(summaryLabels.services, lang)}
                     </span>
-                    {data.services.map((svcKey) => {
-                      const enIdx =
-                        translations.booking.services.en.indexOf(svcKey);
-                      const displaySvc =
-                        enIdx >= 0
-                          ? t(bk.services, lang)[enIdx]
-                          : svcKey;
-                      const cfg = SERVICE_CONFIG[svcKey];
-                      const priceText = cfg?.label
-                        ? (lang === "de" ? cfg.label.de : cfg.label.en)
-                        : cfg?.price
-                        ? cfg.price.unit === "from"
-                          ? `${lang === "de" ? "ab " : "from "}${cfg.price.currency}${cfg.price.amount}`
-                          : `${cfg.price.currency}${cfg.price.amount}`
+                    {(() => {
+                      const offerIncluded = data.offer && OFFER_SERVICE_MAP[data.offer]
+                        ? OFFER_SERVICE_MAP[data.offer]
+                        : [];
+
+                      const offerPriceIndex = data.offer
+                        ? [
+                            translations.offers.card1.title.en,
+                            translations.offers.card2.title.en,
+                            translations.offers.card3.title.en,
+                            translations.offers.card4.title.en,
+                          ].indexOf(data.offer)
+                        : -1;
+                      const offerPrice = offerPriceIndex >= 0
+                        ? t(translations.booking.offerPrices, lang)[offerPriceIndex]
                         : null;
+
+                      const includedServices = data.services.filter((s) => offerIncluded.includes(s));
+                      const additionalServices = data.services.filter((s) => !offerIncluded.includes(s));
+
                       return (
-                        <div key={svcKey} className="flex items-center justify-between gap-2">
-                          <span className="text-white font-bold text-sm">
-                            {displaySvc}
-                          </span>
-                          {priceText && (
-                            <span className="shrink-0 text-[10px] font-bold text-black bg-primary px-2 py-0.5">
-                              {priceText}
-                            </span>
+                        <>
+                          {/* Offer-included services */}
+                          {includedServices.length > 0 && (
+                            <div className="mb-2">
+                              {includedServices.map((svcKey) => {
+                                const enIdx = translations.booking.services.en.indexOf(svcKey);
+                                const displaySvc = enIdx >= 0 ? t(bk.services, lang)[enIdx] : svcKey;
+                                return (
+                                  <div key={svcKey} className="flex items-center justify-between gap-2 py-0.5">
+                                    <span className="text-gray-400 font-semibold text-sm">
+                                      {displaySvc}
+                                    </span>
+                                    <span className="shrink-0 text-[10px] font-bold text-gray-500 line-through px-2 py-0.5">
+                                      {(() => {
+                                        const cfg = SERVICE_CONFIG[svcKey];
+                                        if (cfg?.label) return lang === "de" ? cfg.label.de : cfg.label.en;
+                                        if (cfg?.price) {
+                                          const prefix = cfg.price.unit === "from" ? `${t(translations.booking.from, lang)} ` : "";
+                                          return `${prefix}${cfg.price.currency}${cfg.price.amount}`;
+                                        }
+                                        return t(translations.booking.askForPrice, lang);
+                                      })()}
+                                    </span>
+                                  </div>
+                                );
+                              })}
+                              {offerPrice && (
+                                <div className="flex items-center justify-between gap-2 mt-1 pt-1 border-t border-white/10">
+                                  <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">
+                                    {lang === "de" ? "Angebotspreis" : "Offer price"}
+                                  </span>
+                                  <span className="shrink-0 text-[10px] font-bold text-black bg-primary px-2 py-0.5">
+                                    {offerPrice}
+                                  </span>
+                                </div>
+                              )}
+                            </div>
                           )}
-                        </div>
+
+                          {/* Additional services */}
+                          {additionalServices.length > 0 && (
+                            <div className={includedServices.length > 0 ? "mt-2 pt-2 border-t border-white/10" : ""}>
+                              {includedServices.length > 0 && (
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 block mb-1">
+                                  {lang === "de" ? "Zusätzliche Leistungen" : "Additional Services"}
+                                </span>
+                              )}
+                              {additionalServices.map((svcKey) => {
+                                const enIdx = translations.booking.services.en.indexOf(svcKey);
+                                const displaySvc = enIdx >= 0 ? t(bk.services, lang)[enIdx] : svcKey;
+                                const cfg = SERVICE_CONFIG[svcKey];
+                                const priceText = cfg?.label
+                                  ? (lang === "de" ? cfg.label.de : cfg.label.en)
+                                  : cfg?.price
+                                  ? cfg.price.unit === "from"
+                                    ? `${t(translations.booking.from, lang)} ${cfg.price.currency}${cfg.price.amount}`
+                                    : `${cfg.price.currency}${cfg.price.amount}`
+                                  : t(translations.booking.askForPrice, lang);
+                                return (
+                                  <div key={svcKey} className="flex items-center justify-between gap-2 py-0.5">
+                                    <span className="text-white font-bold text-sm">
+                                      {displaySvc}
+                                    </span>
+                                    <span className="shrink-0 text-[10px] font-bold text-black bg-primary px-2 py-0.5">
+                                      {priceText}
+                                    </span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
+
+                          {/* No offer selected — show all services normally */}
+                          {offerIncluded.length === 0 && data.services.map((svcKey) => {
+                            const enIdx = translations.booking.services.en.indexOf(svcKey);
+                            const displaySvc = enIdx >= 0 ? t(bk.services, lang)[enIdx] : svcKey;
+                            const cfg = SERVICE_CONFIG[svcKey];
+                            const priceText = cfg?.label
+                              ? (lang === "de" ? cfg.label.de : cfg.label.en)
+                              : cfg?.price
+                              ? cfg.price.unit === "from"
+                                ? `${t(translations.booking.from, lang)} ${cfg.price.currency}${cfg.price.amount}`
+                                : `${cfg.price.currency}${cfg.price.amount}`
+                              : t(translations.booking.askForPrice, lang);
+                            return (
+                              <div key={svcKey} className="flex items-center justify-between gap-2 py-0.5">
+                                <span className="text-white font-bold text-sm">
+                                  {displaySvc}
+                                </span>
+                                <span className="shrink-0 text-[10px] font-bold text-black bg-primary px-2 py-0.5">
+                                  {priceText}
+                                </span>
+                              </div>
+                            );
+                          })}
+                        </>
                       );
-                    })}
+                    })()}
                   </div>
                 </div>
               </div>

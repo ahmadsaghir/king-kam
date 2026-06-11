@@ -132,7 +132,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Droplet,
     category: "exterior",
-    price: { amount: 50, unit: "fixed", currency: "€" },
+    price: { amount: 65, unit: "fixed", currency: "€" },
   },
   "Interior Cleaning": {
     imagePath: "/services/interior-cleaning.webp",

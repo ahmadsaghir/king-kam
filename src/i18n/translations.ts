@@ -136,7 +136,7 @@ export const translations = {
         de: "KOMPLETT AUFBEREITUNG (AB 5 SITZE)",
         en: "COMPLETE DETAILING (FROM 5 SEATS)",
       },
-      price: { de: "AB 120 €", en: "FROM 120 €" },
+      price: { de: "120 €", en: "120 €" },
       included: {
         de: [
           "Außenwäsche",
@@ -167,7 +167,7 @@ export const translations = {
     },
     card4: {
       title: {
-        de: "AUTO-WACHS",
+        de: "Versiegelung",
         en: "CAR WAX",
       },
       price: { de: "50 €", en: "50 €" },
