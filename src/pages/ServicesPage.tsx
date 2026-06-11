@@ -299,15 +299,15 @@ export default function ServicesPage() {
                         <p className="text-gray-400 text-sm font-medium flex-1">
                           {t(service.description, lang)}
                         </p>
-                        {(service.price || service.label) && (
-                          <p className="mt-3 text-sm font-bold text-primary tracking-wide">
-                            {service.label
-                              ? t(service.label, lang)
-                              : service.price!.unit === "from"
-                              ? `${lang === "de" ? "ab " : "from "}${service.price!.currency}${service.price!.amount}`
-                              : `${service.price!.currency}${service.price!.amount}`}
-                          </p>
-                        )}
+                        <p className="mt-3 text-sm font-bold text-primary tracking-wide">
+                          {service.label
+                            ? t(service.label, lang)
+                            : service.price
+                            ? service.price.unit === "from"
+                              ? `${t(translations.booking.from, lang)} ${service.price.currency}${service.price.amount}`
+                              : `${service.price.currency}${service.price.amount}`
+                            : t(translations.booking.askForPrice, lang)}
+                        </p>
                         <button
                           onClick={() => openBooking(service.name)}
                           className="mt-4 flex items-center space-x-1 text-xs font-bold uppercase tracking-widest text-primary hover:text-yellow-400 transition-colors"

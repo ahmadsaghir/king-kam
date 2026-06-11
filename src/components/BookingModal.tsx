@@ -348,15 +348,15 @@ function ServiceCard({ label, enKey, selected, cfg, onClick, lang }: ServiceCard
         <span className={`block text-[10px] font-bold uppercase tracking-widest leading-tight transition-colors duration-200 ${selected ? "text-primary" : "text-white"}`}>
           {label}
         </span>
-        {(cfg?.price || cfg?.label) && (
-          <span className="inline-block mt-1 text-[9px] font-bold tracking-wider text-black bg-primary px-1.5 py-0.5">
-            {cfg.label
-              ? (lang === "de" ? cfg.label.de : cfg.label.en)
-              : cfg.price!.unit === "from"
-              ? `${lang === "de" ? "ab " : "from "}${cfg.price!.currency}${cfg.price!.amount}`
-              : `${cfg.price!.currency}${cfg.price!.amount}`}
-          </span>
-        )}
+        <span className="inline-block mt-1 text-[9px] font-bold tracking-wider text-black bg-primary px-1.5 py-0.5">
+          {cfg?.label
+            ? (lang === "de" ? cfg.label.de : cfg.label.en)
+            : cfg?.price
+            ? cfg.price.unit === "from"
+              ? `${t(translations.booking.from, lang)} ${cfg.price.currency}${cfg.price.amount}`
+              : `${cfg.price.currency}${cfg.price.amount}`
+            : t(translations.booking.askForPrice, lang)}
+        </span>
       </div>
 
       {/* Selected check badge */}

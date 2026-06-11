@@ -281,6 +281,7 @@ export const translations = {
     placeholderBrand: { de: "z.B. BMW", en: "e.g. BMW" },
     placeholderModel: { de: "z.B. 4er Serie", en: "e.g. 4 Series" },
     from: { de: "ab", en: "from" },
+    askForPrice: { de: "Auf Anfrage", en: "Ask for a price" },
     services: {
       de: [
         "Außenwäsche",
