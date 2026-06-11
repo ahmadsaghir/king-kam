@@ -307,6 +307,10 @@ export const translations = {
         "Felgen lackieren",
         "Scheinwerfer polieren",
         "Versiegelung",
+        "Motorwäsche",
+        "Hebebühnenvermietung",
+        "Dashcam-Installation",
+        "Rückfahrkamera-Installation",
       ],
       en: [
         "Car Washing",
@@ -332,6 +336,10 @@ export const translations = {
         "Rim Painting",
         "Headlight Polishing",
         "Paint Sealant",
+        "Engine Wash",
+        "Car Lift Rental",
+        "Dash Cam Installation",
+        "Backup Camera Installation",
       ],
     },
     extraServices: {

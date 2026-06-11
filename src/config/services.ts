@@ -28,6 +28,10 @@ import {
   Receipt,
   Sun,
   Droplet,
+  Wind,
+  ChevronsUp,
+  Camera,
+  ScanEye,
   type LucideIcon,
 } from "lucide-react";
 
@@ -335,5 +339,45 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     },
     icon: Receipt,
     category: "assessment",
+  },
+  "Engine Wash": {
+    imagePath: "/services/engine-wash.png",
+    description: {
+      de: "Professionelle Motorwäsche mit Hochdruckreinigung und Entfetter",
+      en: "Professional engine bay cleaning with high-pressure wash and degreaser",
+    },
+    icon: Wind,
+    category: "exterior",
+    price: { amount: 85, unit: "from", currency: "€" },
+  },
+  "Car Lift Rental": {
+    imagePath: "/services/car-lift-rental.png",
+    description: {
+      de: "Hebebühnenvermietung inklusive verschiedener Werkzeuge für DIY-Arbeiten",
+      en: "Car lift rental including various tools for DIY maintenance work",
+    },
+    icon: ChevronsUp,
+    category: "tech",
+    label: { de: "ab 60 € / Stunde", en: "from €60 / hour" },
+  },
+  "Dash Cam Installation": {
+    imagePath: "/services/dashcam-installation.png",
+    description: {
+      de: "Professionelle Dashcam-Montage mit sauberer Kabelverlegung",
+      en: "Professional dash cam fitting with clean cable routing",
+    },
+    icon: Camera,
+    category: "tech",
+    price: { amount: 100, unit: "from", currency: "€" },
+  },
+  "Backup Camera Installation": {
+    imagePath: "/services/backup-camera-installation.png",
+    description: {
+      de: "Einbau einer Rückfahrkamera mit Display-Integration",
+      en: "Backup camera installation with display integration",
+    },
+    icon: ScanEye,
+    category: "tech",
+    price: { amount: 75, unit: "from", currency: "€" },
   },
 };
