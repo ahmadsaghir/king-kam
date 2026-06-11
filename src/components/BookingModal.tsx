@@ -511,26 +511,32 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
       ? format(new Date(data.date + "T00:00:00"), "MMMM d, yyyy", { locale: dateLocale })
       : data.date;
 
-    const localizedServices = data.services.map((enKey) => {
-      const idx = translations.booking.services.en.indexOf(enKey);
-      if (idx >= 0) return t(bk.services, lang)[idx];
-      const extraIdx = translations.booking.extraServices.en.indexOf(enKey);
-      if (extraIdx >= 0) return t(bk.extraServices, lang)[extraIdx];
-      return enKey;
-    });
+    const offerIncludedServices = data.offer && OFFER_SERVICE_MAP[data.offer]
+  ? OFFER_SERVICE_MAP[data.offer]
+  : [];
 
-    const servicePrices = data.services.map((svcKey) => {
-      const cfg = SERVICE_CONFIG[svcKey];
-      if (!cfg) return null;
-      if (cfg.label) {
-        return lang === "de" ? cfg.label.de : cfg.label.en;
-      }
-      if (cfg.price) {
-        const prefix = cfg.price.unit === "from" ? (lang === "de" ? "ab " : "from ") : "";
-        return `${prefix}${cfg.price.currency}${cfg.price.amount}`;
-      }
-      return null;
-    });
+const localizedServices = data.services.map((enKey) => {
+  const idx = translations.booking.services.en.indexOf(enKey);
+  if (idx >= 0) return t(bk.services, lang)[idx];
+  const extraIdx = translations.booking.extraServices.en.indexOf(enKey);
+  if (extraIdx >= 0) return t(bk.extraServices, lang)[extraIdx];
+  return enKey;
+});
+
+const servicePrices = data.services.map((svcKey) => {
+  // suppress price if this service is covered by the selected offer
+  if (offerIncludedServices.includes(svcKey)) return null;
+  const cfg = SERVICE_CONFIG[svcKey];
+  if (!cfg) return null;
+  if (cfg.label) {
+    return lang === "de" ? cfg.label.de : cfg.label.en;
+  }
+  if (cfg.price) {
+    const prefix = cfg.price.unit === "from" ? (lang === "de" ? "ab " : "from ") : "";
+    return `${prefix}${cfg.price.currency}${cfg.price.amount}`;
+  }
+  return t(translations.booking.askForPrice, lang);
+});
 
     const bodyTypeIdx = translations.booking.bodyTypes.en.indexOf(data.bodyType);
     const localizedBodyType =
@@ -548,20 +554,36 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
       return card ? t(card, lang) : data.offer;
     })();
 
-    const messageData = {
-      name: data.name,
-      carBrand: data.carBrand,
-      carModel: data.carModel,
-      bodyType: localizedBodyType,
-      seats: data.seats,
-      offer: localizedOffer,
-      services: localizedServices,
-      servicePrices: servicePrices,
-      date: displayDate,
-      time: data.time,
-    };
+    const offerPriceIndex = data.offer
+  ? [
+      translations.offers.card1.title.en,
+      translations.offers.card2.title.en,
+      translations.offers.card3.title.en,
+      translations.offers.card4.title.en,
+    ].indexOf(data.offer)
+  : -1;
 
-    const message = bk.whatsappMessage[lang](messageData);
+const offerPrice =
+  offerPriceIndex >= 0
+    ? t(translations.booking.offerPrices, lang)[offerPriceIndex]
+    : null;
+
+const messageData = {
+  name: data.name,
+  carBrand: data.carBrand,
+  carModel: data.carModel,
+  bodyType: localizedBodyType,
+  seats: data.seats,
+  offer: localizedOffer,
+  offerPrice,
+  services: localizedServices,
+  servicePrices: servicePrices,
+  date: displayDate,
+  time: data.time,
+};
+
+const message = bk.whatsappMessage[lang](messageData);
+
     const encodedMsg = encodeURIComponent(message);
     window.open(
       `https://wa.me/491792170895?text=${encodedMsg}`,

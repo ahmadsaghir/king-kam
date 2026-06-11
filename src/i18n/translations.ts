@@ -365,27 +365,42 @@ export const translations = {
         bodyType: string;
         seats: string;
         offer: string | null;
+        offerPrice: string | null;
         services: string[];
         servicePrices: (string | null)[];
         date: string;
         time: string;
-      }) =>
-        [
+      }) => {
+        const additionalServices = data.services.filter((_, i) => data.servicePrices[i] !== null);
+        const additionalPrices = data.servicePrices.filter((p) => p !== null);
+        return [
           `Hallo! Ich möchte einen Termin buchen.`,
           ``,
           `Name: ${data.name}`,
           `Auto: ${data.carBrand} ${data.carModel}`,
           `Karosserietyp: ${data.bodyType}`,
           `Sitze: ${data.seats}`,
-          ...(data.offer ? [`Angebot: ${data.offer}`] : []),
-          `Leistungen:`,
-          ...data.services.map((s, i) => {
-            const price = data.servicePrices[i];
-            return price ? `${i + 1}. ${s} (${price})` : `${i + 1}. ${s}`;
-          }),
+          ...(data.offer
+            ? [`Ausgewähltes Angebot: ${data.offer}${data.offerPrice ? ` – ${data.offerPrice}` : ""}`]
+            : []),
+          ...(additionalServices.length > 0
+            ? [
+                `Zusätzliche Leistungen:`,
+                ...additionalServices.map((s, i) => {
+                  const price = additionalPrices[i];
+                  return price ? `${i + 1}. ${s} (${price})` : `${i + 1}. ${s}`;
+                }),
+              ]
+            : data.offer
+            ? []
+            : [
+                `Leistungen:`,
+                ...data.services.map((s, i) => `${i + 1}. ${s}`),
+              ]),
           `Datum: ${data.date}`,
           `Uhrzeit: ${data.time}`,
-        ].join("\n"),
+        ].join("\n");
+      },
       en: (data: {
         name: string;
         carBrand: string;
@@ -393,27 +408,42 @@ export const translations = {
         bodyType: string;
         seats: string;
         offer: string | null;
+        offerPrice: string | null;
         services: string[];
         servicePrices: (string | null)[];
         date: string;
         time: string;
-      }) =>
-        [
+      }) => {
+        const additionalServices = data.services.filter((_, i) => data.servicePrices[i] !== null);
+        const additionalPrices = data.servicePrices.filter((p) => p !== null);
+        return [
           `Hello! I'd like to book a service.`,
           ``,
           `Name: ${data.name}`,
           `Car: ${data.carBrand} ${data.carModel}`,
           `Body Type: ${data.bodyType}`,
           `Seats: ${data.seats}`,
-          ...(data.offer ? [`Offer: ${data.offer}`] : []),
-          `Services:`,
-          ...data.services.map((s, i) => {
-            const price = data.servicePrices[i];
-            return price ? `${i + 1}. ${s} (${price})` : `${i + 1}. ${s}`;
-          }),
+          ...(data.offer
+            ? [`Selected Offer: ${data.offer}${data.offerPrice ? ` – ${data.offerPrice}` : ""}`]
+            : []),
+          ...(additionalServices.length > 0
+            ? [
+                `Additional Services:`,
+                ...additionalServices.map((s, i) => {
+                  const price = additionalPrices[i];
+                  return price ? `${i + 1}. ${s} (${price})` : `${i + 1}. ${s}`;
+                }),
+              ]
+            : data.offer
+            ? []
+            : [
+                `Services:`,
+                ...data.services.map((s, i) => `${i + 1}. ${s}`),
+              ]),
           `Date: ${data.date}`,
           `Time: ${data.time}`,
-        ].join("\n"),
+        ].join("\n");
+      },
     },
   },
 };
