@@ -541,6 +541,8 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
       const offerCards = [
         translations.offers.card1.title,
         translations.offers.card2.title,
+        translations.offers.card3.title,
+        translations.offers.card4.title,
       ];
       const card = offerCards.find((c) => c.en === data.offer);
       return card ? t(card, lang) : data.offer;
@@ -740,6 +742,8 @@ export default function BookingModal({ open, onClose, initialOffer, initialServi
               const offerCards = [
                 translations.offers.card1.title,
                 translations.offers.card2.title,
+                translations.offers.card3.title,
+                translations.offers.card4.title,
               ];
               const prices = t(bk.offerPrices, lang);
               return (
