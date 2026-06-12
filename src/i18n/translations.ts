@@ -311,6 +311,7 @@ export const translations = {
         "Hebebühnenvermietung",
         "Dashcam-Installation",
         "Rückfahrkamera-Installation",
+        "Dachhimmel neu beziehen",
       ],
       en: [
         "Car Washing",
@@ -340,6 +341,7 @@ export const translations = {
         "Car Lift Rental",
         "Dash Cam Installation",
         "Backup Camera Installation",
+        "Headliner Reupholstery",
       ],
     },
     extraServices: {

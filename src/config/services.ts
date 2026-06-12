@@ -178,6 +178,16 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     category: "interior",
     price: { amount: 300, unit: "from", currency: "€" },
   },
+  "Headliner Reupholstery": {
+    imagePath: "/service_images/headliner-reupholstery.webp",
+    description: {
+      de: "Professionelles Neu-Beziehen des Dachhimmels mit hochwertigen Materialien",
+      en: "Professional headliner recovering using premium upholstery materials",
+    },
+    icon: Paintbrush,
+    category: "interior",
+    price: { amount: 550, unit: "from", currency: "€" },
+  },
   "Interior Trim Wrapping": {
     imagePath: "/service_images/interior-trim-wrapping.webp",
     description: {
