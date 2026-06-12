@@ -59,7 +59,7 @@ export const CATEGORY_ORDER: ServiceCategory[] = ["exterior", "interior", "wrapp
 
 export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
   "Car Washing": {
-    imagePath: "/services/car-washing.webp",
+    imagePath: "/service-images/car-washing.webp",
     description: {
       de: "Vollständige Außenwäsche mit Premium-Shampoo und Spülung",
       en: "Full exterior wash with premium shampoo and rinse",
@@ -69,7 +69,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     label: { de: "ab 15€", en: "from €15" },
   },
   "Auto Detailing": {
-    imagePath: "/services/auto-detailing.webp",
+    imagePath: "/service-images/auto-detailing.webp",
     description: {
       de: "Umfassende Lack- und Oberflächenaufbereitung",
       en: "Comprehensive paint and surface restoration treatment",
@@ -79,7 +79,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     label: { de: "ab €50", en: "from €50" },
   },
   "Waxing & Polishing": {
-    imagePath: "/services/waxing-polishing.webp",
+    imagePath: "/service-images/waxing-polishing.webp",
     description: {
       de: "Tiefenglanz-Wachsierung und maschinelle Politur für Showroom-Glanz",
       en: "Deep gloss wax and machine polishing for showroom shine",
@@ -89,7 +89,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 150, unit: "from", currency: "€" },
   },
   "Scratch Removal": {
-    imagePath: "/services/scratch-removal.webp",
+    imagePath: "/service-images/scratch-removal.webp",
     description: {
       de: "Professionelle Lackkorrektur für leichte Kratzer und Schleifringe",
       en: "Professional paint correction for light scratches and swirls",
@@ -99,7 +99,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 50, unit: "from", currency: "€" },
   },
   "Wheel Cleaning": {
-    imagePath: "/services/wheel-cleaning.webp",
+    imagePath: "/service-images/wheel-cleaning.webp",
     description: {
       de: "Bremsstaub-Entfernung und Felgenpolitur für alle Radtypen",
       en: "Brake dust removal and rim polish for all wheel types",
@@ -109,7 +109,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 50, unit: "from", currency: "€" },
   },
   "Tire Service": {
-    imagePath: "/services/tire-service.webp",
+    imagePath: "/service-images/tire-service.webp",
     description: {
       de: "Auswuchten, Rotation und Reifendruckoptimierung",
       en: "Balancing, rotation, and tire pressure optimisation",
@@ -119,7 +119,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 100, unit: "fixed", currency: "€" },
   },
   "Headlight Polishing": {
-    imagePath: "/services/headlight-polishing.webp",
+    imagePath: "/service-images/headlight-polishing.webp",
     description: {
       de: "Aufbereitung trüber oder vergilbter Scheinwerfergläser",
       en: "Restoration of cloudy or yellowed headlight lenses",
@@ -129,7 +129,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 50, unit: "fixed", currency: "€" },
   },
   "Paint Sealant": {
-    imagePath: "/services/paint-sealant.webp",
+    imagePath: "/service-images/paint-sealant.webp",
     description: {
       de: "Keramik- oder Polymer-Lackversiegelung für dauerhaften Schutz",
       en: "Ceramic or polymer paint sealant for long-term protection",
@@ -139,7 +139,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 65, unit: "fixed", currency: "€" },
   },
   "Interior Cleaning": {
-    imagePath: "/services/interior-cleaning.webp",
+    imagePath: "/service-images/interior-cleaning.webp",
     description: {
       de: "Vollständige Innenreinigung mit Absaugen, Abwischen und Polsterpflege",
       en: "Full interior vacuum, wipe-down and upholstery clean",
@@ -149,7 +149,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 50, unit: "from", currency: "€" },
   },
   "Starlight Headliner Installation": {
-    imagePath: "/services/starlight-headliner.webp",
+    imagePath: "/service-images/starlight-headliner.webp",
     description: {
       de: "LED-Glasfaser-Sternenhimmel-Dachhimmelinstallation",
       en: "LED fibre-optic starlight roof lining installation",
@@ -159,7 +159,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     label: { de: "1€ Pro Stern | ab 400 Sterne", en: "€1 per star | from 400 stars" },
   },
   "Ambient Lighting": {
-    imagePath: "/services/ambient-lighting.webp",
+    imagePath: "/service-images/ambient-lighting.webp",
     description: {
       de: "Mehrzonige RGB-Ambientebeleuchtung für den Innenraum",
       en: "Multi-zone RGB ambient interior lighting setup",
@@ -169,7 +169,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 400, unit: "from", currency: "€" },
   },
   "Interior Roof Dyeing": {
-    imagePath: "/services/interior-roof-dyeing.webp",
+    imagePath: "/service-images/interior-roof-dyeing.webp",
     description: {
       de: "Professionelle Stoff-Färbebehandlung für den Dachhimmel",
       en: "Professional fabric dye treatment for the interior headliner",
@@ -179,7 +179,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 300, unit: "from", currency: "€" },
   },
   "Interior Trim Wrapping": {
-    imagePath: "/services/interior-trim-wrapping.webp",
+    imagePath: "/service-images/interior-trim-wrapping.webp",
     description: {
       de: "Folierung von Innenraum-Zierleisten und Verkleidungen",
       en: "Vinyl wrap applied to interior trim strips and panels",
@@ -189,7 +189,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 150, unit: "from", currency: "€" },
   },
   "Car Wrapping": {
-    imagePath: "/services/car-wrapping.webp",
+    imagePath: "/service-images/car-wrapping.webp",
     description: {
       de: "Individuelle Vollfolierung in jeder Farbe und Oberflächenstruktur",
       en: "Custom vinyl wrap in any colour or finish",
@@ -199,7 +199,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 2000, unit: "from", currency: "€" },
   },
   "Roof Wrapping": {
-    imagePath: "/services/roof-wrapping.webp",
+    imagePath: "/service-images/roof-wrapping.webp",
     description: {
       de: "Voll- oder Teilfolierung des Dachs in jeder Farbe und Oberfläche",
       en: "Full or partial roof vinyl wrap in any colour or finish",
@@ -209,7 +209,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 200, unit: "from", currency: "€" },
   },
   "Exterior Trim Wrapping": {
-    imagePath: "/services/exterior-trim-wrapping.webp",
+    imagePath: "/service-images/exterior-trim-wrapping.webp",
     description: {
       de: "Folierung von Chrom- und Kunststoffzierleisten außen",
       en: "Vinyl wrap for exterior chrome and plastic trim pieces",
@@ -219,7 +219,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 150, unit: "from", currency: "€" },
   },
   "Body Kit Installation": {
-    imagePath: "/services/body-kit.webp",
+    imagePath: "/service-images/body-kit.webp",
     description: {
       de: "Montage und Ausrichtung von Front-, Heck- und Seitenschweller-Kits",
       en: "Front, rear and side body kit fitting and alignment",
@@ -228,7 +228,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     category: "wrapping",
   },
   "Brake Caliper Painting": {
-    imagePath: "/services/brake-caliper-painting.webp",
+    imagePath: "/service-images/brake-caliper-painting.webp",
     description: {
       de: "Hochtemperatur-Lackierung der Bremssättel",
       en: "High-temperature paint finish on brake calipers",
@@ -238,7 +238,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 100, unit: "fixed", currency: "€" },
   },
   "Rim Painting": {
-    imagePath: "/services/rim-painting.webp",
+    imagePath: "/service-images/rim-painting.webp",
     description: {
       de: "Individuelles Pulverbeschichten oder Lackieren von Alufelgen",
       en: "Custom colour powder coat or spray paint for alloy rims",
@@ -248,7 +248,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 150, unit: "from", currency: "€" },
   },
   "Display & CarPlay Installation": {
-    imagePath: "/services/display-carplay.webp",
+    imagePath: "/service-images/display-carplay.webp",
     description: {
       de: "Nachgerüsteter Touchscreen mit Apple CarPlay / Android Auto",
       en: "Aftermarket touchscreen with Apple CarPlay / Android Auto",
@@ -258,7 +258,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 150, unit: "from", currency: "€" },
   },
   "Digital Cluster Installation": {
-    imagePath: "/services/digital-cluster.webp",
+    imagePath: "/service-images/digital-cluster.webp",
     description: {
       de: "Upgrade auf volldigitales Kombiinstrument mit Kalibrierung",
       en: "Full-digital instrument cluster upgrade and calibration",
@@ -268,7 +268,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 500, unit: "from", currency: "€" },
   },
   "Vehicle Inspection": {
-    imagePath: "/services/vehicle-inspection.webp",
+    imagePath: "/service-images/vehicle-inspection.webp",
     description: {
       de: "Gründliche Mehrpunkt-Sicherheits- und Zustandsprüfung",
       en: "Thorough multi-point safety and condition check",
@@ -278,7 +278,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 50, unit: "from", currency: "€" },
   },
   "Car Sales": {
-    imagePath: "/services/car-sales.webp",
+    imagePath: "/service-images/car-sales.webp",
     description: {
       de: "Premium-Fahrzeuge aus unserem Showroom kaufen und verkaufen",
       en: "Browse and purchase premium vehicles from our showroom",
@@ -287,7 +287,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     category: "sales",
   },
   "Accident Report": {
-    imagePath: "/services/accident-report.webp",
+    imagePath: "/service-images/accident-report.webp",
     description: {
       de: "Professionelle Schadensbeurteilung und Unfallbericht",
       en: "Professional accident damage assessment and report",
@@ -296,7 +296,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     category: "assessment",
   },
   "Vehicle Valuation": {
-    imagePath: "/services/vehicle-valuation.webp",
+    imagePath: "/service-images/vehicle-valuation.webp",
     description: {
       de: "Zertifizierte Marktwertbewertung für Ihr Fahrzeug",
       en: "Certified market value appraisal for your vehicle",
@@ -305,7 +305,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     category: "assessment",
   },
   "Diminished Value Assessment": {
-    imagePath: "/services/diminished-value.webp",
+    imagePath: "/service-images/diminished-value.webp",
     description: {
       de: "Fachgutachten über den Wertverlust nach Unfallreparatur",
       en: "Expert evaluation of value loss after accident repair",
@@ -314,7 +314,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     category: "assessment",
   },
   "Salvage Value & Total Loss": {
-    imagePath: "/services/salvage-total-loss.webp",
+    imagePath: "/service-images/salvage-total-loss.webp",
     description: {
       de: "Restwertgutachten für Totalschadenfahrzeuge",
       en: "Residual value assessment for total loss vehicles",
@@ -323,7 +323,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     category: "assessment",
   },
   "Repair Cost Calculation": {
-    imagePath: "/services/repair-cost-calculation.webp",
+    imagePath: "/service-images/repair-cost-calculation.webp",
     description: {
       de: "Detaillierte Aufschlüsselung aller Reparaturkosten und Arbeitszeit",
       en: "Detailed breakdown of all repair costs and labour",
@@ -332,7 +332,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     category: "assessment",
   },
   "Cost Estimate": {
-    imagePath: "/services/cost-estimate.webp",
+    imagePath: "/service-images/cost-estimate.webp",
     description: {
       de: "Transparenter schriftlicher Kostenvoranschlag für gewünschte Leistungen",
       en: "Transparent written quote for requested services",
@@ -341,7 +341,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     category: "assessment",
   },
   "Engine Wash": {
-    imagePath: "/services/engine-wash.png",
+    imagePath: "/service-images/engine-wash.png",
     description: {
       de: "Professionelle Motorwäsche mit Hochdruckreinigung und Entfetter",
       en: "Professional engine bay cleaning with high-pressure wash and degreaser",
@@ -351,7 +351,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 85, unit: "from", currency: "€" },
   },
   "Car Lift Rental": {
-    imagePath: "/services/car-lift-rental.png",
+    imagePath: "/service-images/car-lift-rental.png",
     description: {
       de: "Hebebühnenvermietung inklusive verschiedener Werkzeuge für DIY-Arbeiten",
       en: "Car lift rental including various tools for DIY maintenance work",
@@ -361,7 +361,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     label: { de: "ab 60 € / Stunde", en: "from €60 / hour" },
   },
   "Dash Cam Installation": {
-    imagePath: "/services/dashcam-installation.png",
+    imagePath: "/service-images/dashcam-installation.png",
     description: {
       de: "Professionelle Dashcam-Montage mit sauberer Kabelverlegung",
       en: "Professional dash cam fitting with clean cable routing",
@@ -371,7 +371,7 @@ export const SERVICE_CONFIG: Record<string, ServiceConfig> = {
     price: { amount: 100, unit: "from", currency: "€" },
   },
   "Backup Camera Installation": {
-    imagePath: "/services/backup-camera-installation.png",
+    imagePath: "/service-images/backup-camera-installation.png",
     description: {
       de: "Einbau einer Rückfahrkamera mit Display-Integration",
       en: "Backup camera installation with display integration",
