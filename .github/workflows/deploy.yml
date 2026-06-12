@@ -36,6 +36,7 @@ jobs:
           exclude: |
             **/*.jpg
             **/*.jpeg
+            **/*.png
             **/*.gif
             **/*.webp
             **/*.svg
