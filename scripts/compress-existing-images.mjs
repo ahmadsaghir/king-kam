@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 import { compressImage } from "./compress-image.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SERVICES_DIR = path.resolve(__dirname, "../public/services");
+const SERVICES_DIR = path.resolve(__dirname, "../public/service-images");
 
 async function main() {
   const files = fs.readdirSync(SERVICES_DIR).filter((f) => f.endsWith(".jpg"));

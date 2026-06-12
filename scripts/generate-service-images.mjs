@@ -16,7 +16,7 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-const OUTPUT_DIR = path.resolve(__dirname, "../public/services");
+const OUTPUT_DIR = path.resolve(__dirname, "../public/service-images");
 fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
 const SERVICES = [
