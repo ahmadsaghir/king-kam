@@ -157,9 +157,11 @@
 }
 
 /* Custom scrollbars */
-* {
-  scrollbar-color: #FFD700 #1a1a1a;
-  scrollbar-width: thin;
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-color: #FFD700 #1a1a1a;
+    scrollbar-width: thin;
+  }
 }
 
 ::-webkit-scrollbar {

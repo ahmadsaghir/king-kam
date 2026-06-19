@@ -1,0 +1,14 @@
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/bmw.webp
+  Cache-Control: public, max-age=604800
+
+/kam_logo.webp
+  Cache-Control: public, max-age=604800
+
+/kam_logo_nobg.png
+  Cache-Control: public, max-age=604800
+
+/*.jpg
+  Cache-Control: public, max-age=604800

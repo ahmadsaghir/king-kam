@@ -1,21 +1,26 @@
+import { Suspense, lazy } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { LazyMotion, domAnimation } from "framer-motion";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/not-found";
-import HomePage from "@/pages/HomePage";
-import ServicesPage from "@/pages/ServicesPage";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import HomePage from "@/pages/HomePage";
+
+const ServicesPage = lazy(() => import("@/pages/ServicesPage"));
+const NotFound = lazy(() => import("@/pages/not-found"));
 
 const queryClient = new QueryClient();
 
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={HomePage} />
-      <Route path="/services" component={ServicesPage} />
-      <Route component={NotFound} />
-    </Switch>
+    <Suspense fallback={<div className="min-h-screen bg-black" />}>
+      <Switch>
+        <Route path="/" component={HomePage} />
+        <Route path="/services" component={ServicesPage} />
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
   );
 }
 
@@ -24,9 +29,11 @@ function App() {
     <LanguageProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-            <Router />
-          </WouterRouter>
+          <LazyMotion features={domAnimation}>
+            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+              <Router />
+            </WouterRouter>
+          </LazyMotion>
           <Toaster />
         </TooltipProvider>
       </QueryClientProvider>

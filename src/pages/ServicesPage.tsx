@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations, t } from "@/i18n/translations";
@@ -87,31 +87,31 @@ export default function ServicesPage() {
       {/* Page Header */}
       <section className="pt-36 pb-16 px-6 md:px-12 bg-gradient-to-b from-black via-[#0a0a0a] to-black">
         <div className="max-w-7xl mx-auto">
-          <motion.div
+          <m.div
             initial="hidden"
             animate="visible"
             variants={stagger08}
           >
-            <motion.div
+            <m.div
               variants={fadeIn}
               className="inline-flex items-center space-x-2 text-primary font-bold tracking-widest uppercase mb-4"
             >
               <span className="w-12 h-[2px] bg-primary"></span>
               <span>{t(nav.services, lang)}</span>
-            </motion.div>
-            <motion.h1
+            </m.div>
+            <m.h1
               variants={fadeIn}
               className="text-5xl md:text-7xl font-bold uppercase leading-tight mb-4"
             >
               {t(sp.title, lang)}
-            </motion.h1>
-            <motion.p
+            </m.h1>
+            <m.p
               variants={fadeIn}
               className="text-xl text-gray-400 font-medium max-w-2xl border-l-2 border-primary pl-4 py-1"
             >
               {t(sp.subtitle, lang)}
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
         </div>
       </section>
 
@@ -123,7 +123,7 @@ export default function ServicesPage() {
             if (!services || services.length === 0) return null;
             return (
               <div key={cat}>
-                <motion.div
+                <m.div
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-80px" }}
@@ -137,9 +137,9 @@ export default function ServicesPage() {
                     </h2>
                   </div>
                   <div className="w-full h-px bg-white/5 mt-4"></div>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-80px" }}
@@ -147,7 +147,7 @@ export default function ServicesPage() {
                   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
                 >
                   {services.map((service) => (
-                    <motion.div
+                    <m.div
                       key={service.name}
                       variants={fadeIn}
                       className="group bg-card border border-white/5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 overflow-hidden flex flex-col"
@@ -184,9 +184,9 @@ export default function ServicesPage() {
                           <ChevronRight size={14} />
                         </button>
                       </div>
-                    </motion.div>
+                    </m.div>
                   ))}
-                </motion.div>
+                </m.div>
               </div>
             );
           })}

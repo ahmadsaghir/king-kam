@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   Droplets,
   Car,
@@ -45,7 +45,7 @@ function OfferCard({
   onBook,
 }: OfferCardProps) {
   return (
-    <motion.div
+    <m.div
       variants={fadeIn}
       className={`bg-[#1a1a1a] p-8 flex flex-col transition-all duration-300 hover:-translate-y-1 relative ${
         popular
@@ -97,7 +97,7 @@ function OfferCard({
           {bookNowLabel}
         </button>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -149,19 +149,19 @@ export default function HomePage() {
         </div>
 
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-          <motion.div
+          <m.div
             initial="hidden"
             animate="visible"
             variants={stagger15}
             className="flex flex-col items-start"
           >
-            <motion.div
+            <m.div
               variants={fadeIn}
               className="inline-block px-3 py-1 border border-primary/30 bg-primary/10 text-primary text-xs font-bold tracking-[0.2em] uppercase mb-6 rounded-sm"
             >
               {t(hero.badge, lang)}
-            </motion.div>
-            <motion.h1
+            </m.div>
+            <m.h1
               variants={fadeIn}
               className="text-6xl md:text-7xl lg:text-8xl font-bold uppercase leading-[0.9] tracking-tight mb-6"
             >
@@ -169,25 +169,25 @@ export default function HomePage() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-600">
                 {t(hero.headline2, lang)}
               </span>
-            </motion.h1>
-            <motion.p
+            </m.h1>
+            <m.p
               variants={fadeIn}
               className="text-xl md:text-2xl text-gray-400 font-medium mb-10 max-w-lg border-l-2 border-primary pl-4 py-1"
             >
               {t(hero.subtext, lang)}
-            </motion.p>
-            <motion.button
+            </m.p>
+            <m.button
               variants={fadeIn}
               onClick={() => openBooking()}
               data-testid="cta-hero-whatsapp"
-              className="group flex items-center justify-center space-x-3 bg-primary text-black px-8 py-5 text-xl font-bold uppercase tracking-wider hover:bg-yellow-400 transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_40px_rgba(255,215,0,0.3)] hover:shadow-[0_0_60px_rgba(255,215,0,0.5)]"
+              className="group flex items-center justify-center space-x-3 bg-primary text-black px-8 py-5 text-xl font-bold uppercase tracking-wider hover:bg-yellow-400 transition-[transform,box-shadow,background-color] duration-300 hover:scale-[1.02] shadow-[0_0_40px_rgba(255,215,0,0.3)] hover:shadow-[0_0_60px_rgba(255,215,0,0.5)] will-change-transform"
             >
               <span>{t(hero.cta, lang)}</span>
               <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-          </motion.div>
+            </m.button>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
@@ -200,6 +200,8 @@ export default function HomePage() {
                 className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 loading="eager"
                 fetchPriority="high"
+                width={800}
+                height={1000}
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/20 to-transparent pointer-events-none"></div>
               <div className="absolute inset-0 bg-gradient-to-bl from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
@@ -210,14 +212,14 @@ export default function HomePage() {
                 {t(hero.perfectionBadge, lang)}
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* Services Strip */}
       <section id="services" className="py-24 px-6 md:px-12 bg-black border-y border-white/5">
         <div className="max-w-7xl mx-auto">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -225,7 +227,7 @@ export default function HomePage() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {translations.services.map((service, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 variants={fadeIn}
                 className="group bg-card border border-white/5 p-8 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden"
@@ -240,11 +242,11 @@ export default function HomePage() {
                 <p className="text-gray-400 font-medium text-sm relative z-10">
                   {t(service.desc, lang)}
                 </p>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -259,7 +261,7 @@ export default function HomePage() {
               <span>{t(translations.servicesPage.viewAll, lang)}</span>
               <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -267,7 +269,7 @@ export default function HomePage() {
       <section id="offers" className="py-24 px-6 md:px-12 bg-[#0d0d0d] relative overflow-hidden">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="max-w-7xl mx-auto">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -281,9 +283,9 @@ export default function HomePage() {
             <h2 className="text-5xl md:text-6xl font-bold uppercase leading-tight">
               {t(offers.sectionTitle, lang)}
             </h2>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -323,7 +325,7 @@ export default function HomePage() {
               testId="cta-offer-4-whatsapp"
               onBook={() => openBooking(translations.offers.card4.title.en)}
             />
-          </motion.div>
+          </m.div>
         </div>
       </section>
 

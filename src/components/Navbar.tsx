@@ -79,7 +79,9 @@ export default function Navbar({ page }: NavbarProps) {
               src={`${import.meta.env.BASE_URL}kam_logo.webp`}
               alt="The King Kam Logo"
               className="h-12 w-auto object-contain rounded"
-              loading="lazy"
+              loading="eager"
+              width={224}
+              height={230}
             />
           ) : (
             <Link href="/" className="flex items-center">
@@ -87,7 +89,9 @@ export default function Navbar({ page }: NavbarProps) {
                 src={`${import.meta.env.BASE_URL}kam_logo.webp`}
                 alt="The King Kam Logo"
                 className="h-12 w-auto object-contain rounded"
-                loading="lazy"
+                loading="eager"
+                width={224}
+                height={230}
               />
             </Link>
           )}
