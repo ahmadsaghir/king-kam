@@ -17,6 +17,7 @@ export default function Navbar({ page }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -27,7 +28,7 @@ export default function Navbar({ page }: NavbarProps) {
   };
 
   const navItemClass = (mobile?: boolean) =>
-    `hover:text-primary transition-colors${mobile ? " text-left" : ""}`;
+    `uppercase hover:text-primary transition-colors${mobile ? " text-left" : ""}`;
 
   const NavItem = ({
     sectionId,
