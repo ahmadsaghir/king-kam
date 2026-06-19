@@ -9,7 +9,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { Link } from "wouter";
-import carHeroImg from "@assets/bmw.webp";
 import BookingModal from "@/components/BookingModal";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -196,10 +195,11 @@ export default function HomePage() {
           >
             <div className="absolute inset-0 rounded-2xl border border-white/5 bg-card overflow-hidden group">
               <img
-                src={carHeroImg}
+                src={`${import.meta.env.BASE_URL}bmw.webp`}
                 alt="Yellow performance car with carbon fibre details"
                 className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 loading="eager"
+                fetchPriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/20 to-transparent pointer-events-none"></div>
               <div className="absolute inset-0 bg-gradient-to-bl from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>

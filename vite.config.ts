@@ -1,32 +1,38 @@
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
-const isReplit = process.env.REPL_ID !== undefined;
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
-const basePath = process.env.BASE_PATH ?? "/";
+function inlineCssPlugin(): Plugin {
+  let collectedCss = "";
+  return {
+    name: "inline-css",
+    apply: "build",
+    generateBundle(_options, bundle) {
+      for (const [name, chunk] of Object.entries(bundle)) {
+        if (name.endsWith(".css") && chunk.type === "asset") {
+          collectedCss += chunk.source as string;
+          delete bundle[name];
+        }
+      }
+    },
+    transformIndexHtml: {
+      order: "post",
+      handler(html) {
+        return html
+          .replace(/<link rel="stylesheet"[^>]*>/g, "")
+          .replace("</head>", `<style>${collectedCss}</style>\n</head>`);
+      },
+    },
+  };
+}
 
 export default defineConfig({
-  base: basePath,
+  base: "/",
   plugins: [
     react(),
     tailwindcss(),
-    ...(isReplit && process.env.NODE_ENV !== "production"
-      ? [
-          await import("@replit/vite-plugin-runtime-error-modal").then((m) =>
-            m.default(),
-          ),
-          await import("@replit/vite-plugin-cartographer").then((m) =>
-            m.cartographer({
-              root: path.resolve(import.meta.dirname, ".."),
-            }),
-          ),
-          await import("@replit/vite-plugin-dev-banner").then((m) =>
-            m.devBanner(),
-          ),
-        ]
-      : []),
+    inlineCssPlugin(),
   ],
   resolve: {
     alias: {
@@ -41,17 +47,11 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    port,
+    port: 5000,
     host: "0.0.0.0",
-    allowedHosts: true,
-    fs: {
-      strict: true,
-      deny: ["**/.*"],
-    },
   },
   preview: {
-    port,
+    port: 5000,
     host: "0.0.0.0",
-    allowedHosts: true,
   },
 });
