@@ -236,9 +236,9 @@ export default function HomePage() {
                 <div className="text-white group-hover:text-primary transition-colors duration-300 mb-6 relative z-10">
                   {SERVICE_ICONS[index]}
                 </div>
-                <h3 className="text-2xl font-bold uppercase tracking-wide mb-2 relative z-10">
+                <h2 className="text-2xl font-bold uppercase tracking-wide mb-2 relative z-10">
                   {t(service.title, lang)}
-                </h3>
+                </h2>
                 <p className="text-gray-400 font-medium text-sm relative z-10">
                   {t(service.desc, lang)}
                 </p>

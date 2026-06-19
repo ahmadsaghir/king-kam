@@ -29,7 +29,7 @@ export default function Footer({ className = "" }: FooterProps) {
                 loading="lazy"
               />
             </Link>
-            <p className="text-gray-500 font-medium text-lg max-w-sm mb-8">
+            <p className="text-gray-400 font-medium text-lg max-w-sm mb-8">
               {t(footer.tagline, lang)}
             </p>
             <div className="flex flex-row space-x-4">
@@ -41,8 +41,9 @@ export default function Footer({ className = "" }: FooterProps) {
                 className="flex items-center space-x-3 text-white hover:text-primary transition-colors duration-300 group"
               >
                 <div className="w-10 h-10 bg-card border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-black group-hover:border-primary transition-all duration-300 shrink-0">
-                  <SiInstagram size={20} />
+                  <SiInstagram size={20} aria-hidden="true" />
                 </div>
+                <span className="sr-only">Instagram</span>
               </a>
               <a
                 href="https://www.tiktok.com/@kam.auto1"
@@ -52,8 +53,9 @@ export default function Footer({ className = "" }: FooterProps) {
                 className="flex items-center space-x-3 text-white hover:text-primary transition-colors duration-300 group"
               >
                 <div className="w-10 h-10 bg-card border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-black group-hover:border-primary transition-all duration-300 shrink-0">
-                  <SiTiktok size={20} />
+                  <SiTiktok size={20} aria-hidden="true" />
                 </div>
+                <span className="sr-only">TikTok</span>
               </a>
             </div>
           </div>
@@ -86,7 +88,7 @@ export default function Footer({ className = "" }: FooterProps) {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm font-semibold text-gray-600 uppercase tracking-widest">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm font-semibold text-gray-400 uppercase tracking-widest">
           <p>
             &copy; {new Date().getFullYear()} The King Kam Autoaufbereitung.{" "}
             {t(footer.rights, lang)}
