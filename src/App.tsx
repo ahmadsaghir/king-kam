@@ -2,13 +2,13 @@ import { Suspense, lazy } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { LazyMotion, domAnimation } from "framer-motion";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import HomePage from "@/pages/HomePage";
 
 const ServicesPage = lazy(() => import("@/pages/ServicesPage"));
 const NotFound = lazy(() => import("@/pages/not-found"));
+const Toaster = lazy(() => import("@/components/ui/toaster").then(m => ({ default: m.Toaster })));
+const TooltipProvider = lazy(() => import("@/components/ui/tooltip").then(m => ({ default: m.TooltipProvider })));
 
 const queryClient = new QueryClient();
 
@@ -28,14 +28,16 @@ function App() {
   return (
     <LanguageProvider>
       <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <LazyMotion features={domAnimation}>
-            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-              <Router />
-            </WouterRouter>
-          </LazyMotion>
-          <Toaster />
-        </TooltipProvider>
+        <LazyMotion features={domAnimation}>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+            <Router />
+          </WouterRouter>
+        </LazyMotion>
+        <Suspense fallback={null}>
+          <TooltipProvider>
+            <Toaster />
+          </TooltipProvider>
+        </Suspense>
       </QueryClientProvider>
     </LanguageProvider>
   );

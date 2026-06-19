@@ -9,7 +9,7 @@ import {
   CATEGORY_ORDER,
   type ServiceCategory,
 } from "@/config/services";
-import BookingModal from "@/components/BookingModal";
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { fadeIn, staggerContainer } from "@/lib/animations";
@@ -46,6 +46,8 @@ function LazyServiceImage({ src, alt, className }: { src: string; alt: string; c
     />
   );
 }
+
+const BookingModal = lazy(() => import("@/components/BookingModal"));
 
 export default function ServicesPage() {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -195,12 +197,16 @@ export default function ServicesPage() {
 
       <Footer />
 
-      <BookingModal
-        open={bookingOpen}
-        onClose={() => setBookingOpen(false)}
-        initialOffer={null}
-        initialService={bookingService}
-      />
+      {bookingOpen && (
+        <Suspense fallback={null}>
+          <BookingModal
+            open={bookingOpen}
+            onClose={() => setBookingOpen(false)}
+            initialOffer={null}
+            initialService={bookingService}
+          />
+        </Suspense>
+      )}
     </div>
   );
 }

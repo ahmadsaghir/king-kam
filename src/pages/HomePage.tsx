@@ -9,7 +9,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { Link } from "wouter";
-import BookingModal from "@/components/BookingModal";
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -110,6 +110,8 @@ const SERVICE_ICONS = [
   <Wrench size={36} />,
 ];
 
+const BookingModal = lazy(() => import("@/components/BookingModal"));
+
 export default function HomePage() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [bookingOffer, setBookingOffer] = useState<string | null>(null);
@@ -187,12 +189,7 @@ export default function HomePage() {
             </m.button>
           </m.div>
 
-          <m.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-            className="relative h-[260px] md:h-[400px] lg:h-[600px] w-full"
-          >
+          <div className="relative h-[260px] md:h-[400px] lg:h-[600px] w-full opacity-0 animate-[fadeInScale_1s_0.3s_ease-out_forwards]">
             <div className="absolute inset-0 rounded-2xl border border-white/5 bg-card overflow-hidden group">
               <img
                 src={`${import.meta.env.BASE_URL}bmw.webp`}
@@ -200,6 +197,7 @@ export default function HomePage() {
                 className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 loading="eager"
                 fetchPriority="high"
+                decoding="async"
                 width={800}
                 height={1000}
               />
@@ -212,7 +210,7 @@ export default function HomePage() {
                 {t(hero.perfectionBadge, lang)}
               </div>
             </div>
-          </m.div>
+          </div>
         </div>
       </section>
 
@@ -331,11 +329,15 @@ export default function HomePage() {
 
       <Footer className="mt-12" />
 
-      <BookingModal
-        open={bookingOpen}
-        onClose={() => setBookingOpen(false)}
-        initialOffer={bookingOffer}
-      />
+      {bookingOpen && (
+        <Suspense fallback={null}>
+          <BookingModal
+            open={bookingOpen}
+            onClose={() => setBookingOpen(false)}
+            initialOffer={bookingOffer}
+          />
+        </Suspense>
+      )}
     </div>
   );
 }

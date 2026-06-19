@@ -27,6 +27,8 @@ export default function Footer({ className = "" }: FooterProps) {
                 alt="The King Kam Logo"
                 className="h-16 w-auto object-contain mb-6 grayscale hover:grayscale-0 transition-all duration-500"
                 loading="lazy"
+                width={109}
+                height={112}
               />
             </Link>
             <p className="text-gray-400 font-medium text-lg max-w-sm mb-8">
