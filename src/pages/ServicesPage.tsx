@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, type Variants } from "framer-motion";
-import { Menu, X, ChevronRight } from "lucide-react";
-import { Link } from "wouter";
-import { SiInstagram, SiTiktok } from "react-icons/si";
+import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations, t } from "@/i18n/translations";
 import {
@@ -12,6 +10,9 @@ import {
   type ServiceCategory,
 } from "@/config/services";
 import BookingModal from "@/components/BookingModal";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { fadeIn, staggerContainer } from "@/lib/animations";
 
 function LazyServiceImage({ src, alt, className }: { src: string; alt: string; className: string }) {
   const imgRef = useRef<HTMLImageElement>(null);
@@ -47,8 +48,6 @@ function LazyServiceImage({ src, alt, className }: { src: string; alt: string; c
 }
 
 export default function ServicesPage() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
   const [bookingService, setBookingService] = useState<string | null>(null);
 
@@ -57,32 +56,11 @@ export default function ServicesPage() {
     setBookingOpen(true);
   };
 
-  const { lang, toggleLanguage } = useLanguage();
+  const { lang } = useLanguage();
   const nav = translations.nav;
-  const footer = translations.footer;
-  const contact = translations.contact;
   const sp = translations.servicesPage;
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const fadeIn: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
-  const staggerContainer: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08 },
-    },
-  };
+  const stagger08 = staggerContainer(0.08);
 
   const getServiceLabel = (enKey: string): string => {
     const idx = translations.booking.services.en.indexOf(enKey);
@@ -104,117 +82,7 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden selection:bg-primary selection:text-black">
-      {/* Sticky Navbar */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-black/95 backdrop-blur-md border-b border-white/10 py-3"
-            : "bg-black/80 backdrop-blur-sm py-5"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          <Link href="/" className="flex items-center">
-            <img
-              src={`${import.meta.env.BASE_URL}kam_logo.webp`}
-              alt="The King Kam Logo"
-              className="h-12 w-auto object-contain rounded"
-              loading="lazy"
-            />
-          </Link>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-10 text-sm font-semibold tracking-widest uppercase">
-            <Link
-              href="/services"
-              data-testid="nav-services"
-              className="text-primary hover:text-primary transition-colors"
-            >
-              {t(nav.services, lang)}
-            </Link>
-            <Link
-              href="/#offers"
-              data-testid="nav-offers"
-              className="hover:text-primary transition-colors"
-            >
-              {t(nav.offers, lang)}
-            </Link>
-            <Link
-              href="/#about"
-              data-testid="nav-about"
-              className="hover:text-primary transition-colors"
-            >
-              {t(nav.about, lang)}
-            </Link>
-            <Link
-              href="/#contact"
-              data-testid="nav-contact"
-              className="hover:text-primary transition-colors"
-            >
-              {t(nav.contact, lang)}
-            </Link>
-            <button
-              onClick={toggleLanguage}
-              data-testid="lang-toggle"
-              className="hover:text-primary transition-colors border border-white/20 hover:border-primary px-3 py-1 text-xs"
-            >
-              {lang === "de" ? "EN" : "DE"}
-            </button>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden text-white hover:text-primary"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-
-        {/* Mobile Nav */}
-        {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-lg border-b border-white/10 py-6 px-6 flex flex-col space-y-6 text-lg font-bold tracking-wider uppercase">
-            <Link
-              href="/services"
-              data-testid="nav-mobile-services"
-              className="text-left text-primary hover:text-primary transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t(nav.services, lang)}
-            </Link>
-            <Link
-              href="/#offers"
-              data-testid="nav-mobile-offers"
-              className="text-left hover:text-primary transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t(nav.offers, lang)}
-            </Link>
-            <Link
-              href="/#about"
-              data-testid="nav-mobile-about"
-              className="text-left hover:text-primary transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t(nav.about, lang)}
-            </Link>
-            <Link
-              href="/#contact"
-              data-testid="nav-mobile-contact"
-              className="text-left hover:text-primary transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t(nav.contact, lang)}
-            </Link>
-            <button
-              onClick={toggleLanguage}
-              data-testid="lang-toggle-mobile"
-              className="text-left hover:text-primary transition-colors"
-            >
-              {lang === "de" ? "EN" : "DE"}
-            </button>
-          </div>
-        )}
-      </nav>
+      <Navbar page="services" />
 
       {/* Page Header */}
       <section className="pt-36 pb-16 px-6 md:px-12 bg-gradient-to-b from-black via-[#0a0a0a] to-black">
@@ -222,7 +90,7 @@ export default function ServicesPage() {
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={staggerContainer}
+            variants={stagger08}
           >
             <motion.div
               variants={fadeIn}
@@ -275,7 +143,7 @@ export default function ServicesPage() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-80px" }}
-                  variants={staggerContainer}
+                  variants={stagger08}
                   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
                 >
                   {services.map((service) => (
@@ -325,91 +193,14 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer
-        id="about"
-        className="bg-[#050505] border-t border-white/10 pt-20 pb-10 px-6 md:px-12 relative z-10"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-            <div className="md:col-span-5 flex flex-col items-start">
-              <Link href="/">
-                <img
-                  src={`${import.meta.env.BASE_URL}kam_logo.webp`}
-                  alt="The King Kam Logo"
-                  className="h-16 w-auto object-contain mb-6 grayscale hover:grayscale-0 transition-all duration-500"
-                  loading="lazy"
-                />
-              </Link>
-              <p className="text-gray-500 font-medium text-lg max-w-sm mb-8">
-                {t(footer.tagline, lang)}
-              </p>
-              <div className="flex flex-row space-x-4">
-                <a
-                  href="https://www.instagram.com/kam.autoaufbereitung"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-3 text-white hover:text-primary transition-colors duration-300 group"
-                >
-                  <div className="w-10 h-10 bg-card border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-black group-hover:border-primary transition-all duration-300 shrink-0">
-                    <SiInstagram size={20} />
-                  </div>
-                </a>
-                <a
-                  href="https://www.tiktok.com/@kam.auto1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-3 text-white hover:text-primary transition-colors duration-300 group"
-                >
-                  <div className="w-10 h-10 bg-card border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-black group-hover:border-primary transition-all duration-300 shrink-0">
-                    <SiTiktok size={20} />
-                  </div>
-                </a>
-              </div>
-            </div>
+      <Footer />
 
-            <div className="md:col-span-3"></div>
-
-            <div id="contact" className="md:col-span-4">
-              <h4 className="text-2xl font-bold uppercase tracking-wider mb-6 text-white">
-                {t(contact.title, lang)}
-              </h4>
-              <ul className="space-y-4 text-gray-400 font-medium text-lg">
-                <li className="flex items-start">
-                  <span className="font-bold text-white uppercase tracking-wider w-24">
-                    {t(contact.address, lang)}
-                  </span>
-                  <span>
-                    Am Bruche 44,
-                    <br /> 31812 Bad Pyrmont
-                  </span>
-                </li>
-                <li className="flex items-center border-t border-white/10 pt-4 mt-4">
-                  <span className="font-bold text-white uppercase tracking-wider w-24">
-                    {t(contact.phone, lang)}
-                  </span>
-                  <a
-                    href="tel:01792170895"
-                    className="hover:text-primary transition-colors"
-                  >
-                    0179 217 08 95
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm font-semibold text-gray-600 uppercase tracking-widest">
-            <p>
-              &copy; {new Date().getFullYear()} The King Kam Autoaufbereitung.{" "}
-              {t(footer.rights, lang)}
-            </p>
-            <p className="mt-4 md:mt-0">{t(footer.detailing, lang)}</p>
-          </div>
-        </div>
-      </footer>
-
-      <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} initialOffer={null} initialService={bookingService} />
+      <BookingModal
+        open={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+        initialOffer={null}
+        initialService={bookingService}
+      />
     </div>
   );
 }

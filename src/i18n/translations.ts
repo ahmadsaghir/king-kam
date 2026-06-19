@@ -50,64 +50,6 @@ export const translations = {
     validVehicleTypes: { de: "Gültige Fahrzeugtypen", en: "Valid Vehicle Types" },
     bookNow: { de: "Jetzt buchen", en: "Book Now" },
     popular: { de: "Beliebt", en: "Popular" },
-    availableFrom: {
-      de: "Verfügbar ab 1. April 2026",
-      en: "Available from April 1, 2026",
-    },
-    // OLD CARD 1 (commented out)
-    // card1: {
-    //   title: {
-    //     de: "Innen- und Außenreinigung komplett",
-    //     en: "Interior & Exterior Cleaning Package",
-    //   },
-    //   included: {
-    //     de: [
-    //       "Komplette Außenwäsche",
-    //       "Felgen- und Reifenreinigung",
-    //       "Gründliche Innenreinigung (Sitze & Boden)",
-    //       "Staubsaugen",
-    //       "Reinigung von Armaturenbrett & Kunststoffen",
-    //       "Fahrzeugduft / Lufterfrischer",
-    //     ],
-    //     en: [
-    //       "Complete exterior wash",
-    //       "Wheel and tire cleaning",
-    //       "Thorough interior cleaning (seats & floor)",
-    //       "Vacuuming",
-    //       "Cleaning of dashboard & plastics",
-    //       "Car scenting / Air freshener",
-    //     ],
-    //   },
-    //   extras: {
-    //     de: [
-    //       "Entfernung hartnäckiger Flecken",
-    //       "Tiefenreinigung mit Dampf",
-    //       "Professionelle Lackpolitur",
-    //       "Lederpflege",
-    //     ],
-    //     en: [
-    //       "Removal of stubborn stains",
-    //       "Deep steam cleaning",
-    //       "Professional paint polishing",
-    //       "Leather conditioning",
-    //     ],
-    //   },
-    // },
-    // OLD CARD 2 (commented out)
-    // card2: {
-    //   title: {
-    //     de: "Premium 3-Schicht-Politur",
-    //     en: "Premium 3-Layer Car Polishing",
-    //   },
-    //   included: {
-    //     de: ["Kratzer entfernen", "Tiefenglanz", "Hochglanzfinish"],
-    //     en: ["Remove scratches", "Deep shine", "High-gloss finish"],
-    //   },
-    //   vehicleTypes: {
-    //     de: ["Kombi", "Limousine", "Coupé"],
-    //     en: ["Station Wagon", "Sedan", "Coupe"],
-    //   },
-    // },
     card1: {
       title: {
         de: "KOMPLETT AUFBEREITUNG (BIS 5 SITZE)",
@@ -175,16 +117,6 @@ export const translations = {
         de: ["Für den ultimativen Schutz und Glanz"],
         en: ["For the ultimate protection and shine"],
       },
-    },
-  },
-  loyalty: {
-    headline: {
-      de: "3x Waschen, 4x gratis",
-      en: "Get 3 Washes, 4th is FREE",
-    },
-    subtext: {
-      de: "Unsere Art, treue Kunden zu belohnen.",
-      en: "Our way of rewarding loyal customers.",
     },
   },
   contact: {
